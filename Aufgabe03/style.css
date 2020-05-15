@@ -1,7 +1,32 @@
 body{
     background-image: url("Hintergrund.bg.png");
+    text-align: center;
+}
+nav{
+    background-color: black;
+    width: 180px;
+    height: 20px;
+    border-radius: 5%;
+    margin: -5px auto auto 670px;
+    position: sticky;
+    top: 0;
 }
 
+nav a{
+    color: white;
+    text-decoration: none;
+
+}
+
+nav a:hover{
+    color: red;
+    
+}
+
+#kreis img:hover{
+    width: 60px;
+    
+}
 #kreis{
     background-color: rgb(169, 127, 207);
     width: 500px;
@@ -18,3 +43,12 @@ body{
     color: white;
     
 }
+#kreis p{
+    margin: 10px 0 0 250px;
+    font-size: 20px;
+    font-family: monospace;
+    color: white;
+    
+}
+
+
