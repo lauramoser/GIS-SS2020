@@ -52,4 +52,20 @@ nav a:hover{
     
 }
 
+#kontakt a{
+    font-family: monospace;
+    color: rgb(169, 127, 207);
+    font-size: 30px;
+}
+
+#kontakt input{
+    background-color: rgb(185, 180, 176);
+}
+#kontakt textarea{
+    background-color: rgb(185, 180, 176);
+}
+
+
+
+
 
