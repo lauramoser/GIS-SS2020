@@ -4,9 +4,9 @@ body{
     font-family: sans-serif;
     
 }
-nav{
+.menu{
     background-color: black;
-    width: 180px;
+    width: 200px;
     height: 20px;
     border-radius: 5%;
     margin: -5px auto auto 60%;
@@ -14,13 +14,13 @@ nav{
     top: 0;
 }
 
-nav a{
+.menu a{
     color: white;
     text-decoration: none;
 
 }
 
-nav a:hover{
+.menu a:hover{
     color: red;
     
 }
