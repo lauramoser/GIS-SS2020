@@ -1,0 +1,87 @@
+body{
+    font-family: sans-serif;
+    
+    padding: 0%;
+    margin: 0px;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    
+}
+
+nav{
+    background-color: rgb(189, 57, 4);
+    height: 80px;
+    width: 100%
+}
+
+#suche{
+    width: 15%;
+    height: 30%;
+    margin-left: 50%;
+}
+img[alt=einkaufswagen]{
+    padding-left: 90px;
+    padding-top: 15px;
+
+}
+
+
+
+label.name{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 50px;
+    font-weight: bold;
+}
+
+nav ul{
+    float: right;
+    margin-right: 300px;
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 80px ;
+    margin: 0 30px;
+}
+
+nav ul li a{
+    color: black;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    
+}
+
+a.active,a:hover{
+    background-color: rgb(243, 227, 198);
+    transition: .5s;
+}
+
+.traminer img{
+    width: 20%;
+    
+}
+
+.kategorie1{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: auto;
+}
+.traminer{
+    width: 30%;
+}
+
+
+
+
+ 
+
+ 
