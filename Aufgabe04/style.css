@@ -185,12 +185,6 @@ h3::after {
         
     }
     
-    a.active,a:hover{
-        background-color: rgb(243, 227, 198);
-        transition: .5s;
-    }
-    
-    
     
     .traminer img{
         width: 100%;
@@ -268,21 +262,24 @@ h3::after {
     }
     
     .traminer img{
-        width: 100%;
+        width: 40%;
         
     }
     
     .kategorie1{
-        width: 100%;
-        display: inline-block;
+
+        width: 40%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
         justify-content: space-evenly;
-        margin: 0 auto 0 auto;
+        margin: auto;
     }
     .traminer{
-        width: 100%;
-        padding: 50px 1.5% 50px 1.5%;
+        width: 80%;
+        padding: 30px 1,5% 30px 1,5%;
         height: 30%;
-        text-align: center;
+        
     }
     
     .kategorie2{
