@@ -241,7 +241,7 @@ h3::after {
     }
 }
 
-@media screen and (min-width:600px) and (max-width:1023px){
+@media screen and (min-width:600px) and (max-width:1024px){
    
     #suche{
         width: 15%;
@@ -276,43 +276,43 @@ h3::after {
         margin: auto;
     }
     .traminer{
-        width: 80%;
+        width: 40%;
         padding: 30px 1,5% 30px 1,5%;
         height: 30%;
         
     }
     
     .kategorie2{
-        width: 100%;
+        width: 40%;
         display: inline-block;
         justify-content: space-evenly;
         margin: auto;
     }
     
     .sauvignon img{
-        width: 100%;
+        width: 40%;
     }
     
     .sauvignon{
-        width: 100%;
+        width: 40%;
         padding: 50px 1.5% 50px 1.5%;
         height: 30%;
         text-align: center;
     }
     
     .kategorie3{
-        width: 100%;
+        width: 40%;
         display: inline-block;
         justify-content: space-evenly;
         margin: auto;
     }
     
     .riesling img{
-        width: 100%;
+        width: 40%;
     }
     
     .riesling{
-        width: 100%;
+        width: 40%;
         padding: 50px 1.5% 50px 1.5%;
         height: 30%;
         text-align: center;
