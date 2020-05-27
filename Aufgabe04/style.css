@@ -247,41 +247,17 @@ h3::after {
     }
 }
 
-@media screen and (width:600px){
-
-    body{
-        font-family: sans-serif;
-        padding: 0%;
-        margin: 0px;
-        text-decoration: none;
-        list-style: none;
-        box-sizing: border-box;
-        
-    }
-    
-    nav{
-        background-color: #7e5c5c;
-        height: 80px;
-        width: 100%;
-    }
-    
+@media screen and (min-width:600px){
+   
     #suche{
         width: 15%;
         height: 30%;
-        margin-left: 20%;
+        margin-left: 5%;
     }
     img[alt=einkaufswagen]{
         padding-left: 90px;
         padding-top: 15px;
     
-    }
-    
-    label.name{
-        color: white;
-        font-size: 35px;
-        line-height: 80px;
-        padding: 0 50px;
-        font-weight: bold;
     }
     
     nav ul{
@@ -290,27 +266,6 @@ h3::after {
         line-height: 80px ;
         margin: auto;
     }
-    
- 
-    
-    nav ul li a{
-        color: black;
-        font-size: 17px;
-        padding: 7px 20px;
-        border-radius: 3px;
-        text-transform: uppercase;
-        text-decoration: none;
-       
-    
-        
-    }
-    
-    a.active,a:hover{
-        background-color: rgb(243, 227, 198);
-        transition: .5s;
-    }
-    
-    
     
     .traminer img{
         width: 100%;
@@ -365,6 +320,7 @@ h3::after {
         height: 30%;
         text-align: center;
     }
+
 }
 
 
