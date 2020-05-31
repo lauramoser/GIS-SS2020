@@ -18,31 +18,6 @@ let gewürztraminer6: Gewürztraminer = { img: "Gewürztraminer7.jpg", name: "K�
 //Array
 let gewürztraminer: Gewürztraminer[] = [gewürztraminer1, gewürztraminer2, gewürztraminer3, gewürztraminer4, gewürztraminer5, gewürztraminer6];
 
-for (let index: number = 0; index < gewürztraminer.length; index++) {
-    let newDiv: HTMLDivElement = document.createElement("div");
-    newDiv.id = "traminer" + index;
-    document.getElementById("kategorie1")?.appendChild(newDiv);
-
-    //Bild
-    let imgElement: HTMLImageElement = document.createElement("img");
-    imgElement.src = gewürztraminer[index].img;
-    document.getElementById("kategorie1" + index)?.appendChild(imgElement);
-
-    //p von Name und Preis
-    let namePrice: HTMLParagraphElement = document.createElement("p");
-    namePrice.innerHTML = gewürztraminer[index].name;
-    document.getElementById("kategorie1" + index)?.appendChild(namePrice);
-
-    //p Beschreibung
-    let desc: HTMLParagraphElement = document.createElement("p");
-    desc.innerHTML = gewürztraminer[index].beschreibung;
-    document.getElementById("kategorie1" + index)?.appendChild(desc);
-
-    //kaufen button
-    let kaufen: HTMLButtonElement = document.createElement("button");
-    kaufen.innerHTML = "kaufen";
-    document.getElementById("kategorie1" + index)?.appendChild(kaufen);
-}
 
 //Sauvignon Seite
 interface Sauvignon {
@@ -53,41 +28,17 @@ interface Sauvignon {
 
 }
 
-let sauvignon1: Sauvignon = { img: "Sauvignon1.jpg", name: "Maybach", preis: "20€", beschreibung: "Perfekt für den ersten Mai" };
-let sauvignon2: Sauvignon = { img: "Sauvignon2.jpg", name: "Ancyra", preis: "20€", beschreibung: "Wieso nicht?" };
-let sauvignon3: Sauvignon = { img: "Sauvignon3.jpg", name: "Lorenz & Söhne", preis: "20€", beschreibung: "Bei dem Anblick wird man schwach" };
-let sauvignon4: Sauvignon = { img: "Sauvignon4.jpg", name: "Winkl", preis: "20€", beschreibung: "Danach zwinkert man jedem zu" };
-let sauvignon5: Sauvignon = { img: "Sauvignon5.jpg", name: "Hörner", preis: "20€", beschreibung: "Wenn Hörner drauf sind kanns nur gut sein" };
-let sauvignon6: Sauvignon = { img: "Sauvignon6.jpg", name: "Isabey", preis: "20€", beschreibung: "Ein sehr fruchtiger und süßer Wein" };
+let sauvignon1: Sauvignon = { img: "Sauvignon1.png", name: "Maybach", preis: "20€", beschreibung: "Perfekt für den ersten Mai" };
+let sauvignon2: Sauvignon = { img: "Sauvignon2.png", name: "Ancyra", preis: "20€", beschreibung: "Wieso nicht?" };
+let sauvignon3: Sauvignon = { img: "Sauvignon3.png", name: "Lorenz & Söhne", preis: "20€", beschreibung: "Bei dem Anblick wird man schwach" };
+let sauvignon4: Sauvignon = { img: "Sauvignon4.png", name: "Winkl", preis: "20€", beschreibung: "Danach zwinkert man jedem zu" };
+let sauvignon5: Sauvignon = { img: "Sauvignon5.png", name: "Hörner", preis: "20€", beschreibung: "Wenn Hörner drauf sind kanns nur gut sein" };
+let sauvignon6: Sauvignon = { img: "Sauvignon6.png", name: "Isabey", preis: "20€", beschreibung: "Ein sehr fruchtiger und süßer Wein" };
 
 
 let sauvignon: Sauvignon[] = [sauvignon1 , sauvignon2, sauvignon3, sauvignon4, sauvignon5, sauvignon6 ];
 
-for (let index: number = 0; index < sauvignon.length; index++) {
-    let newDiv: HTMLDivElement = document.createElement("div");
-    newDiv.id = "sauvignon" + index;
-    document.getElementById("kategorie2")?.appendChild(newDiv);
 
-    
-    let imgElement: HTMLImageElement = document.createElement("img");
-    imgElement.src = sauvignon[index].img;
-    document.getElementById("kategorie2" + index)?.appendChild(imgElement);
-
- 
-    let namePrice: HTMLParagraphElement = document.createElement("p");
-    namePrice.innerHTML = sauvignon[index].name;
-    document.getElementById("kategorie2" + index)?.appendChild(namePrice);
-
-    
-    let desc: HTMLParagraphElement = document.createElement("p");
-    desc.innerHTML = sauvignon[index].beschreibung;
-    document.getElementById("kategorie2" + index)?.appendChild(desc);
-
-    
-    let kaufen: HTMLButtonElement = document.createElement("button");
-    kaufen.innerHTML = "kaufen";
-    document.getElementById("kategorie2" + index)?.appendChild(kaufen);
-}
 
 //Riesling Seite
 interface Riesling {
@@ -108,6 +59,71 @@ let riesling6: Riesling = { img: "Riesling6.jpg", name: "Allendorf", preis: "20�
 
 let riesling: Sauvignon[] = [riesling1, riesling2, riesling3, riesling4, riesling5, riesling6];
 
+//Traminer
+for (let index: number = 0; index < gewürztraminer.length; index++) {
+    let newDiv: HTMLDivElement = document.createElement("div");
+    newDiv.id = "traminer" + index;
+    document.getElementById("kategorie1")?.appendChild(newDiv);
+
+    //Bild
+    let imgElement: HTMLImageElement = document.createElement("img");
+    imgElement.src = gewürztraminer[index].img;
+    document.getElementById("traminer" + index)?.appendChild(imgElement);
+
+    //p von Name 
+    let name: HTMLParagraphElement = document.createElement("h1");
+    name.innerHTML = gewürztraminer[index].name;
+    document.getElementById("traminer" + index)?.appendChild(name);
+
+    //p von Preis
+    let preis: HTMLParagraphElement = document.createElement("p");
+    preis.innerHTML = gewürztraminer[index].preis;
+    document.getElementById("traminer" + index)?.appendChild(preis);
+
+    //p Beschreibung
+    let desc: HTMLParagraphElement = document.createElement("p");
+    desc.innerHTML = gewürztraminer[index].beschreibung;
+    document.getElementById("traminer" + index)?.appendChild(desc);
+
+    //kaufen button
+    let kaufen: HTMLButtonElement = document.createElement("button");
+    kaufen.innerHTML = "kaufen";
+    document.getElementById("traminer" + index)?.appendChild(kaufen);
+}
+
+//Sauvignon
+for (let index: number = 0; index < sauvignon.length; index++) {
+    let newDiv: HTMLDivElement = document.createElement("div");
+    newDiv.id = "sauvignon" + index;
+    document.getElementById("kategorie2")?.appendChild(newDiv);
+
+    
+    let imgElement: HTMLImageElement = document.createElement("img");
+    imgElement.src = sauvignon[index].img;
+    document.getElementById("sauvignon" + index)?.appendChild(imgElement);
+
+ 
+    let name: HTMLParagraphElement = document.createElement("h1");
+    name.innerHTML = sauvignon[index].name;
+    document.getElementById("sauvignon" + index)?.appendChild(name);
+
+
+    let preis: HTMLParagraphElement = document.createElement("p");
+    preis.innerHTML = gewürztraminer[index].preis;
+    document.getElementById("sauvignon" + index)?.appendChild(preis);
+
+    
+    let desc: HTMLParagraphElement = document.createElement("p");
+    desc.innerHTML = sauvignon[index].beschreibung;
+    document.getElementById("sauvignon" + index)?.appendChild(desc);
+
+    
+    let kaufen: HTMLButtonElement = document.createElement("button");
+    kaufen.innerHTML = "kaufen";
+    document.getElementById("sauvignon" + index)?.appendChild(kaufen);
+}
+
+//Riesling
 for (let index: number = 0; index < riesling.length; index++) {
     let newDiv: HTMLDivElement = document.createElement("div");
     newDiv.id = "riesling" + index;
@@ -116,17 +132,21 @@ for (let index: number = 0; index < riesling.length; index++) {
    
     let imgElement: HTMLImageElement = document.createElement("img");
     imgElement.src = riesling[index].img;
-    document.getElementById("kategorie3" + index)?.appendChild(imgElement);
+    document.getElementById("riesling" + index)?.appendChild(imgElement);
 
-    let namePrice: HTMLParagraphElement = document.createElement("p");
-    namePrice.innerHTML = riesling[index].name;
-    document.getElementById("kategorie3" + index)?.appendChild(namePrice);
+    let name: HTMLParagraphElement = document.createElement("h1");
+    name.innerHTML = riesling[index].name;
+    document.getElementById("riesling" + index)?.appendChild(name);
+
+    let preis: HTMLParagraphElement = document.createElement("p");
+    preis.innerHTML = gewürztraminer[index].preis;
+    document.getElementById("riesling" + index)?.appendChild(preis);
 
     let desc: HTMLParagraphElement = document.createElement("p");
     desc.innerHTML = riesling[index].beschreibung;
-    document.getElementById("kategorie3" + index)?.appendChild(desc);
+    document.getElementById("riesling" + index)?.appendChild(desc);
 
     let kaufen: HTMLButtonElement = document.createElement("button");
     kaufen.innerHTML = "kaufen";
-    document.getElementById("kategorie3" + index)?.appendChild(kaufen);
+    document.getElementById("riesling" + index)?.appendChild(kaufen);
 }
