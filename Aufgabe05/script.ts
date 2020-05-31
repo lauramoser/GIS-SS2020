@@ -1,3 +1,5 @@
+//Gewürztraminer Seite
+//Werte initialisiert
 interface Gewürztraminer {
     img: string;
     name: string;
@@ -5,7 +7,7 @@ interface Gewürztraminer {
     beschreibung: string;
 
 }
-
+//Artikel mit allen Werten
 let gewürztraminer1: Gewürztraminer = { img: "Gewürztraminer1.jpg", name: "St. Michael-Eppan", preis: "20€", beschreibung: "So süß wie dein Schatz" };
 let gewürztraminer2: Gewürztraminer = { img: "Gewürztraminer2.jpg", name: "Nussbaumer", preis: "20€", beschreibung: "Herb und süß zugleich" };
 let gewürztraminer3: Gewürztraminer = { img: "Gewürztraminer3.jpg", name: "Wolfberger", preis: "20€", beschreibung: "wölfe sind underways" };
@@ -13,7 +15,7 @@ let gewürztraminer4: Gewürztraminer = { img: "Gewürztraminer6.jpg", name: "W�
 let gewürztraminer5: Gewürztraminer = { img: "Gewürztraminer8.jpg", name: "Kurtatsch", preis: "20€", beschreibung: "Sieht sehr hochwertig aus" };
 let gewürztraminer6: Gewürztraminer = { img: "Gewürztraminer7.jpg", name: "Königschaffhauser Hasenberg", preis: "20€", beschreibung: "Bei dem Namen kann er ja nur gut sein" };
 
-
+//Array
 let gewürztraminer: Gewürztraminer[] = [gewürztraminer1, gewürztraminer2, gewürztraminer3, gewürztraminer4, gewürztraminer5, gewürztraminer6];
 
 for (let index: number = 0; index < gewürztraminer.length; index++) {
@@ -21,28 +23,28 @@ for (let index: number = 0; index < gewürztraminer.length; index++) {
     newDiv.id = "traminer" + index;
     document.getElementById("kategorie1")?.appendChild(newDiv);
 
-    //IMG IN DIV PACKEN
+    //Bild
     let imgElement: HTMLImageElement = document.createElement("img");
     imgElement.src = gewürztraminer[index].img;
     document.getElementById("kategorie1" + index)?.appendChild(imgElement);
 
-    //NAME UND PREIS
+    //p von Name und Preis
     let namePrice: HTMLParagraphElement = document.createElement("p");
     namePrice.innerHTML = gewürztraminer[index].name;
     document.getElementById("kategorie1" + index)?.appendChild(namePrice);
 
-    //BESCHREIBUNG
+    //p Beschreibung
     let desc: HTMLParagraphElement = document.createElement("p");
     desc.innerHTML = gewürztraminer[index].beschreibung;
     document.getElementById("kategorie1" + index)?.appendChild(desc);
 
-    //BUTTON
+    //kaufen button
     let kaufen: HTMLButtonElement = document.createElement("button");
     kaufen.innerHTML = "kaufen";
     document.getElementById("kategorie1" + index)?.appendChild(kaufen);
 }
 
-
+//Sauvignon Seite
 interface Sauvignon {
     img: string;
     name: string;
@@ -66,27 +68,28 @@ for (let index: number = 0; index < sauvignon.length; index++) {
     newDiv.id = "sauvignon" + index;
     document.getElementById("kategorie2")?.appendChild(newDiv);
 
-    //IMG IN DIV PACKEN
+    
     let imgElement: HTMLImageElement = document.createElement("img");
     imgElement.src = sauvignon[index].img;
     document.getElementById("kategorie2" + index)?.appendChild(imgElement);
 
-    //NAME UND PREIS
+ 
     let namePrice: HTMLParagraphElement = document.createElement("p");
     namePrice.innerHTML = sauvignon[index].name;
     document.getElementById("kategorie2" + index)?.appendChild(namePrice);
 
-    //BESCHREIBUNG
+    
     let desc: HTMLParagraphElement = document.createElement("p");
     desc.innerHTML = sauvignon[index].beschreibung;
     document.getElementById("kategorie2" + index)?.appendChild(desc);
 
-    //BUTTON
+    
     let kaufen: HTMLButtonElement = document.createElement("button");
     kaufen.innerHTML = "kaufen";
     document.getElementById("kategorie2" + index)?.appendChild(kaufen);
 }
 
+//Riesling Seite
 interface Riesling {
     img: string;
     name: string;
@@ -110,22 +113,19 @@ for (let index: number = 0; index < riesling.length; index++) {
     newDiv.id = "riesling" + index;
     document.getElementById("kategorie3")?.appendChild(newDiv);
 
-    //IMG IN DIV PACKEN
+   
     let imgElement: HTMLImageElement = document.createElement("img");
     imgElement.src = riesling[index].img;
     document.getElementById("kategorie3" + index)?.appendChild(imgElement);
 
-    //NAME UND PREIS
     let namePrice: HTMLParagraphElement = document.createElement("p");
     namePrice.innerHTML = riesling[index].name;
     document.getElementById("kategorie3" + index)?.appendChild(namePrice);
 
-    //BESCHREIBUNG
     let desc: HTMLParagraphElement = document.createElement("p");
     desc.innerHTML = riesling[index].beschreibung;
     document.getElementById("kategorie3" + index)?.appendChild(desc);
 
-    //BUTTON
     let kaufen: HTMLButtonElement = document.createElement("button");
     kaufen.innerHTML = "kaufen";
     document.getElementById("kategorie3" + index)?.appendChild(kaufen);
