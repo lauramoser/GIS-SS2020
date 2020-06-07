@@ -1,0 +1,268 @@
+body{
+    font-family: sans-serif;
+    padding: 0%;
+    margin: 0px;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    
+}
+
+nav{
+    background-color: #7e5c5c;
+    height: 80px;
+    width: 100%
+}
+
+#suche{
+    width: 15%;
+    height: 30%;
+    margin-left: 50%;
+}
+img[alt=einkaufswagen]{
+    padding-left: 90px;
+    padding-top: 15px;
+
+}
+
+label.name{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 50px;
+    font-weight: bold;
+}
+
+nav ul{
+    float: right;
+    margin-right: 300px;
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 80px ;
+    margin: 0 30px;
+}
+
+nav ul li a{
+    color: black;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    
+}
+
+#count{
+    background-color: rgb(120, 125, 123);
+    position: absolute;
+    margin-left: 40%;
+    margin-top: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;  
+}
+#zahl{
+    color:salmon;
+    margin-top: 6px;
+}
+
+#Gewürztraminer, #Sauvignon, #Riesling  {
+    color: black;
+    font-size: 17px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #7e5c5c;
+}
+
+
+.traminerClass img, .sauvignonClass img, .rieslingClass img{
+    width: 100%;
+    
+}
+
+
+.kategorie {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: auto;
+}
+
+
+.traminerClass, .sauvignonClass, .rieslingClass {
+
+    width: 30%;
+    padding: 50px 1.5% 50px 1.5%;
+    height: 30%;
+    text-align: center;
+}
+
+h3::after {
+    content: "";
+    color: rgb(0, 0, 0);
+}
+
+.bild{
+    text-align: center;
+}
+
+@media screen and (max-width:600px){
+    body{
+        font-family: sans-serif;
+        padding: 0%;
+        margin: 0px;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+        
+    }
+    
+    nav{
+        background-color: #7e5c5c;
+        height: 80px;
+        width: 100%
+    }
+    
+    #suche{
+        width: 15%;
+        height: 30%;
+        margin-left: 5%;
+    }
+    img[alt=einkaufswagen]{
+        padding-left: 70px;
+        padding-top: 15px;
+    
+    }
+    
+    label.name{
+        color: white;
+        font-size: 35px;
+        line-height: 80px;
+        padding: 0 50px;
+        font-weight: bold;
+    }
+    
+    nav ul{
+        margin: 0 auto 0 auto;
+        text-align: center;
+        line-height: 80px ;
+        margin: auto;
+    }
+    
+ 
+    
+    nav ul li a{
+        color: black;
+        font-size: 17px;
+        padding: 7px 20px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        text-decoration: none;
+       
+    
+        
+    }
+    #Gewürztraminer, #Sauvignon, #Riesling  {
+        color: black;
+        font-size: 17px;
+        text-align: center;
+        text-transform: uppercase;
+        background-color: #7e5c5c;
+    }
+    
+    #traminer0 img, #traminer1 img, #traminer2 img,
+    #traminer3 img, #traminer4 img, #traminer5 img,
+    #sauvignon0 img, #sauvignon1 img, #sauvignon2 img,
+    #sauvignon3 img, #sauvignon4 img, #sauvignon5 img,
+    #riesling0 img, #riesling1 img, #riesling2 img,
+    #riesling3 img, #riesling4 img, #riesling5 img {
+        width: 100%;
+        
+    }
+    
+    .kategorie1, .kategorie2, .kategorie3{
+        width: 100%;
+        display: inline-block;
+        justify-content: space-evenly;
+        margin: 0 auto 0 auto;
+    }
+
+    #traminer0 , #traminer1 , #traminer2 ,
+    #traminer3 , #traminer4 , #traminer5 ,
+    #sauvignon0, #sauvignon1, #sauvignon2,
+    #sauvignon3, #sauvignon4, #sauvignon5, 
+    #riesling0, #riesling1, #riesling2,
+    #riesling3, #riesling4, #riesling5,
+    .traminer, .riesling, .sauvignon{
+        width: 100%;
+        padding: 50px 1.5% 50px 1.5%;
+        height: 30%;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width:600px) and (max-width:1024px){
+   
+    #suche{
+        width: 15%;
+        height: 30%;
+        margin-left: 5%;
+    }
+    img[alt=einkaufswagen]{
+        padding-left: 90px;
+        padding-top: 15px;
+    
+    }
+    
+    nav ul{
+        margin: 0 auto 0 auto;
+        text-align: center;
+        line-height: 80px ;
+        margin: auto;
+    }
+    
+    #traminer0 img, #traminer1 img, #traminer2 img,
+    #traminer3 img, #traminer4 img, #traminer5 img,
+    #sauvignon0 img, #sauvignon1 img, #sauvignon2 img,
+    #sauvignon3 img, #sauvignon4 img, #sauvignon5 img,
+    #riesling0 img, #riesling1 img, #riesling2 img,
+    #riesling3 img, #riesling4 img, #riesling5 img {
+        width: 100%;
+        
+    }
+    
+    .kategorie1, .kategorie2, .kategorie3{
+
+        width: 40%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin: auto;
+    }
+
+    #traminer0 , #traminer1 , #traminer2 ,
+    #traminer3 , #traminer4 , #traminer5 ,
+    #sauvignon0, #sauvignon1, #sauvignon2,
+    #sauvignon3, #sauvignon4, #sauvignon5, 
+    #riesling0, #riesling1, #riesling2,
+    #riesling3, #riesling4, #riesling5,
+    .sauvignon, .traminer, .riesling{
+        width: 40%;
+        padding: 50px 1.5% 50px 1.5%;
+        height: 30%;
+        text-align: center;
+    }
+
+}
+
+
+
+ 
+
+ 
