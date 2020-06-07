@@ -19,7 +19,7 @@ nav{
     height: 30%;
     margin-left: 50%;
 }
-img[alt=einkaufswagen]{
+#einkaufswagen{
     padding-left: 90px;
     padding-top: 15px;
 
@@ -54,19 +54,11 @@ nav ul li a{
     
 }
 
-#count{
-    background-color: rgb(120, 125, 123);
-    position: absolute;
-    margin-left: 40%;
-    margin-top: 10px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    text-align: center;  
-}
-#zahl{
-    color:salmon;
-    margin-top: 6px;
+#zaehlerWagen {
+    background-color: black;
+    border-radius: 100%;
+    color: #7e5c5c;
+    position: relative;
 }
 
 #Gewürztraminer, #Sauvignon, #Riesling  {
@@ -175,30 +167,20 @@ h3::after {
         background-color: #7e5c5c;
     }
     
-    #traminer0 img, #traminer1 img, #traminer2 img,
-    #traminer3 img, #traminer4 img, #traminer5 img,
-    #sauvignon0 img, #sauvignon1 img, #sauvignon2 img,
-    #sauvignon3 img, #sauvignon4 img, #sauvignon5 img,
-    #riesling0 img, #riesling1 img, #riesling2 img,
-    #riesling3 img, #riesling4 img, #riesling5 img {
+    
+    .traminerClass img, .sauvignonClass img, .rieslingClass img{
         width: 100%;
         
     }
     
-    .kategorie1, .kategorie2, .kategorie3{
+    .kategorie{
         width: 100%;
         display: inline-block;
         justify-content: space-evenly;
         margin: 0 auto 0 auto;
     }
 
-    #traminer0 , #traminer1 , #traminer2 ,
-    #traminer3 , #traminer4 , #traminer5 ,
-    #sauvignon0, #sauvignon1, #sauvignon2,
-    #sauvignon3, #sauvignon4, #sauvignon5, 
-    #riesling0, #riesling1, #riesling2,
-    #riesling3, #riesling4, #riesling5,
-    .traminer, .riesling, .sauvignon{
+    .traminerClass, .sauvignonClass, .rieslingClass{
         width: 100%;
         padding: 50px 1.5% 50px 1.5%;
         height: 30%;
@@ -226,17 +208,12 @@ h3::after {
         margin: auto;
     }
     
-    #traminer0 img, #traminer1 img, #traminer2 img,
-    #traminer3 img, #traminer4 img, #traminer5 img,
-    #sauvignon0 img, #sauvignon1 img, #sauvignon2 img,
-    #sauvignon3 img, #sauvignon4 img, #sauvignon5 img,
-    #riesling0 img, #riesling1 img, #riesling2 img,
-    #riesling3 img, #riesling4 img, #riesling5 img {
+    .traminerClass img, .sauvignonClass img, .rieslingClass img{
         width: 100%;
         
     }
     
-    .kategorie1, .kategorie2, .kategorie3{
+    .kategorie{
 
         width: 40%;
         display: flex;
@@ -246,13 +223,7 @@ h3::after {
         margin: auto;
     }
 
-    #traminer0 , #traminer1 , #traminer2 ,
-    #traminer3 , #traminer4 , #traminer5 ,
-    #sauvignon0, #sauvignon1, #sauvignon2,
-    #sauvignon3, #sauvignon4, #sauvignon5, 
-    #riesling0, #riesling1, #riesling2,
-    #riesling3, #riesling4, #riesling5,
-    .sauvignon, .traminer, .riesling{
+    .traminerClass, .sauvignonClass, .rieslingClass{
         width: 40%;
         padding: 50px 1.5% 50px 1.5%;
         height: 30%;

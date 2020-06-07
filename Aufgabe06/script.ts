@@ -84,6 +84,7 @@ namespace Produkte {
         //kaufen button
         let kaufen: HTMLButtonElement = document.createElement("button");
         kaufen.innerHTML = "kaufen";
+        kaufen.setAttribute("tsrIndex", i.toString());
         kaufen.addEventListener("click", handleWarenkorb);
         document.getElementById("tsr" + i)?.appendChild(kaufen);
 
@@ -93,17 +94,24 @@ namespace Produkte {
     clickZaehler = 0;
     let gesamtPreis: number;
     gesamtPreis = 0;
+    let zaehlerWagen: HTMLDivElement = document.createElement("div");
+    zaehlerWagen.id = "zaehlerWagen";
+
+    document.getElementById("einkaufswagen")?.appendChild(zaehlerWagen);
+    zaehlerWagen.innerHTML = clickZaehler.toString();
+
 
     function handleWarenkorb(_event: Event): void {
         clickZaehler ++;
+        let target: HTMLElement = (<HTMLElement>_event.target);
+        let tsrIndex: number = parseInt(target.getAttribute("tsrIndex")!);
+        zaehlerWagen.innerHTML = "" + clickZaehler;
+
 
         if (clickZaehler > 0) {
+            zaehlerWagen.style.display = "block";
         
-        
-
-
-
-
+            gesamtPreis = gesamtPreis + weine[tsrIndex].preis;
             console.log( gesamtPreis + "€");
         }
     }
