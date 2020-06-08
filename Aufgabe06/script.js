@@ -11,7 +11,7 @@ var Produkte;
     let gewürztraminer6 = { img: "Gewürztraminer7.jpg", name: "Königschaffhauser Hasenberg", preis: 20, beschreibung: "Bei dem Namen kann er ja nur gut sein", kategorie: "Gewürztraminer" };
     let sauvignon1 = { img: "Sauvignon1.png", name: "Maybach", preis: 60, beschreibung: "Perfekt für den ersten Mai", kategorie: "Sauvignon" };
     let sauvignon2 = { img: "Sauvignon2.png", name: "Ancyra", preis: 480, beschreibung: "Wieso nicht?", kategorie: "Sauvignon" };
-    let sauvignon3 = { img: "Sauvignon3.png", name: "Lorenz & Söhne", preis: 6.60, beschreibung: "Bei dem Anblick wird man schwach", kategorie: "Sauvignon" };
+    let sauvignon3 = { img: "Sauvignon3.png", name: "Lorenz & Söhne", preis: 660, beschreibung: "Bei dem Anblick wird man schwach", kategorie: "Sauvignon" };
     let sauvignon4 = { img: "Sauvignon4.png", name: "Winkl", preis: 2.06, beschreibung: "Danach zwinkert man jedem zu", kategorie: "Sauvignon" };
     let sauvignon5 = { img: "Sauvignon5.png", name: "Hörner", preis: 2.34, beschreibung: "Wenn Hörner drauf sind kanns nur gut sein", kategorie: "Sauvignon" };
     let sauvignon6 = { img: "Sauvignon6.png", name: "Isabey", preis: 10, beschreibung: "Ein sehr fruchtiger und süßer Wein", kategorie: "Sauvignon" };
@@ -63,24 +63,46 @@ var Produkte;
         //kaufen button
         let kaufen = document.createElement("button");
         kaufen.innerHTML = "kaufen";
+        kaufen.setAttribute("tsrIndex", i.toString());
         kaufen.addEventListener("click", handleWarenkorb);
         document.getElementById("tsr" + i)?.appendChild(kaufen);
     }
-    let zaehler = 0;
+    let clickZaehler;
+    clickZaehler = 0;
+    let gesamtPreis;
+    gesamtPreis = 0;
+    let zaehlerWagen = document.createElement("div");
+    zaehlerWagen.id = "zaehlerWagenID";
     function handleWarenkorb(_event) {
-        zaehler++;
-        if (zaehler == 1) {
-            document.getElementById("header")?.appendChild(newDiv);
-            zähler.innerHTML = zaehler + "";
-            document.getElementById("count")?.appendChild(zähler);
+        clickZaehler++;
+        let target = _event.target;
+        let tsrIndex = parseInt(target.getAttribute("tsrIndex"));
+        zaehlerWagen.innerHTML = "" + clickZaehler;
+        if (clickZaehler > 0) {
+            document.getElementById("header")?.appendChild(zaehlerWagen);
+            zaehlerWagen.innerHTML = clickZaehler.toString();
+            gesamtPreis = gesamtPreis + weine[tsrIndex].preis;
+            console.log(gesamtPreis + "€");
         }
-        if (zaehler > 1) {
-            zähler.innerHTML = zaehler + "";
+    }
+    document.getElementById("kategorie1")?.addEventListener("click", handlerLoeschen);
+    document.getElementById("kategorie2")?.addEventListener("click", handlerLoeschen);
+    document.getElementById("kategorie3")?.addEventListener("click", handlerLoeschen);
+    function handlerLoeschen(_event) {
+        let target = _event.target;
+        let kategorie = target.getAttribute("href");
+        if (kategorie == "#Gewürztraminer") {
+            document.getElementById("Sauvignon")?.setAttribute("style", "display : none");
+            document.getElementById("Riesling")?.setAttribute("style", "display : flex");
         }
-        let irgendwas = _event.target;
-        let irgendwas2 = irgendwas.dataset.karl;
-        summe = summe + parseFloat(irgendwas2);
-        console.log(summe + " Euro");
+        else if (kategorie == "#Sauvignon") {
+            document.getElementById("Gewürztraminer")?.setAttribute("style", "display : none");
+            document.getElementById("Riesling")?.setAttribute("style", "display : flex");
+        }
+        else {
+            document.getElementById("Gewürztraminer")?.setAttribute("style", "display : flex");
+            document.getElementById("Sauvignon")?.setAttribute("style", "display : flex");
+        }
     }
 })(Produkte || (Produkte = {}));
 //# sourceMappingURL=script.js.map

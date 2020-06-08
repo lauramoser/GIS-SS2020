@@ -17,7 +17,7 @@ nav{
 #suche{
     width: 15%;
     height: 30%;
-    margin-left: 50%;
+    margin-left: 45%;
 }
 
 
@@ -50,19 +50,23 @@ nav ul li a{
     
 }
 
+img[alt=einkaufswagen]{
+    margin-left: 20%;
+
+}
+
 #zaehlerWagenID {
     background-color: black;
     border-radius: 50%;
-    height: 80px;
-    width: 80px;
+    height: 20px;
+    width: 20px;
     color: #7e5c5c;
+    text-decoration: none;
+    text-align: center;
 }
 
-#testID{
-    height: 50px;
-    width: 50px;
-    background-color: rgb(0, 22, 219) ;
-}
+
+
 
 #Gewürztraminer, #Sauvignon, #Riesling  {
     color: black;

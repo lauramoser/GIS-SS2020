@@ -9,6 +9,7 @@ namespace Produkte {
         kategorie: string;
 
     }
+
     //Artikel mit allen Werten
     let gewürztraminer1: Wein = { img: "Gewürztraminer1.jpg", name: "St. Michael-Eppan", preis: 5, beschreibung: "So süß wie dein Schatz", kategorie: "Gewürztraminer" };
     let gewürztraminer2: Wein = { img: "Gewürztraminer2.jpg", name: "Nussbaumer", preis: 2.99, beschreibung: "Herb und süß zugleich", kategorie: "Gewürztraminer" };
@@ -19,7 +20,7 @@ namespace Produkte {
 
     let sauvignon1: Wein = { img: "Sauvignon1.png", name: "Maybach", preis: 60, beschreibung: "Perfekt für den ersten Mai", kategorie: "Sauvignon" };
     let sauvignon2: Wein = { img: "Sauvignon2.png", name: "Ancyra", preis: 480, beschreibung: "Wieso nicht?", kategorie: "Sauvignon" };
-    let sauvignon3: Wein = { img: "Sauvignon3.png", name: "Lorenz & Söhne", preis: 6.60, beschreibung: "Bei dem Anblick wird man schwach", kategorie: "Sauvignon" };
+    let sauvignon3: Wein = { img: "Sauvignon3.png", name: "Lorenz & Söhne", preis: 660, beschreibung: "Bei dem Anblick wird man schwach", kategorie: "Sauvignon" };
     let sauvignon4: Wein = { img: "Sauvignon4.png", name: "Winkl", preis: 2.06, beschreibung: "Danach zwinkert man jedem zu", kategorie: "Sauvignon" };
     let sauvignon5: Wein = { img: "Sauvignon5.png", name: "Hörner", preis: 2.34, beschreibung: "Wenn Hörner drauf sind kanns nur gut sein", kategorie: "Sauvignon" };
     let sauvignon6: Wein = { img: "Sauvignon6.png", name: "Isabey", preis: 10, beschreibung: "Ein sehr fruchtiger und süßer Wein", kategorie: "Sauvignon" };
@@ -80,6 +81,7 @@ namespace Produkte {
         let desc: HTMLParagraphElement = document.createElement("p");
         desc.innerHTML = weine[i].beschreibung;
         document.getElementById("tsr" + i)?.appendChild(desc);
+        
 
         //kaufen button
         let kaufen: HTMLButtonElement = document.createElement("button");
@@ -87,7 +89,6 @@ namespace Produkte {
         kaufen.setAttribute("tsrIndex", i.toString());
         kaufen.addEventListener("click", handleWarenkorb);
         document.getElementById("tsr" + i)?.appendChild(kaufen);
-
     }
 
     let clickZaehler: number;
@@ -96,12 +97,7 @@ namespace Produkte {
     gesamtPreis = 0;
     let zaehlerWagen: HTMLDivElement = document.createElement("div");
     zaehlerWagen.id = "zaehlerWagenID";
-
-    let test: HTMLDivElement = document.createElement("div");
-    test.id = "testID";
-    document.getElementById("testdiv")?.appendChild(test);
-
-
+    
     function handleWarenkorb(_event: Event): void {
         clickZaehler ++;
         let target: HTMLElement = (<HTMLElement>_event.target);
@@ -111,12 +107,36 @@ namespace Produkte {
         
 
         if (clickZaehler > 0) {
-            document.getElementById("einkaufswagen")?.appendChild(zaehlerWagen);
+            document.getElementById("header")?.appendChild(zaehlerWagen);
             zaehlerWagen.innerHTML = clickZaehler.toString();
-        
-        
+
             gesamtPreis = gesamtPreis + weine[tsrIndex].preis;
             console.log( gesamtPreis + "€");
         }
+    }
+
+    document.getElementById("kategorie1")?.addEventListener("click", handlerLoeschen);
+    document.getElementById("kategorie2")?.addEventListener("click", handlerLoeschen);
+    document.getElementById("kategorie3")?.addEventListener("click", handlerLoeschen);
+
+    function handlerLoeschen(_event: Event): void {
+        let target: HTMLElement = (<HTMLElement>_event.target);
+        let kategorie: string = target.getAttribute("href")!;
+
+        if (kategorie == "#Gewürztraminer") {
+            document.getElementById("Sauvignon")?.setAttribute("style", "display : none");
+            document.getElementById("Riesling")?.setAttribute("style", "display : flex");
+        }
+
+        else if (kategorie == "#Sauvignon") {
+            document.getElementById("Gewürztraminer")?.setAttribute("style", "display : none");
+            document.getElementById("Riesling")?.setAttribute("style", "display : flex");
+        }
+
+        else {
+            document.getElementById("Gewürztraminer")?.setAttribute("style", "display : flex");
+            document.getElementById("Sauvignon")?.setAttribute("style", "display : flex");
+        }
+
     }
 }
