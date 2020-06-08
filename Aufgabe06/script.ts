@@ -95,10 +95,11 @@ namespace Produkte {
     let gesamtPreis: number;
     gesamtPreis = 0;
     let zaehlerWagen: HTMLDivElement = document.createElement("div");
-    zaehlerWagen.id = "zaehlerWagen";
+    zaehlerWagen.id = "zaehlerWagenID";
 
-    document.getElementById("einkaufswagen")?.appendChild(zaehlerWagen);
-    zaehlerWagen.innerHTML = clickZaehler.toString();
+    let test: HTMLDivElement = document.createElement("div");
+    test.id = "testID";
+    document.getElementById("testdiv")?.appendChild(test);
 
 
     function handleWarenkorb(_event: Event): void {
@@ -107,9 +108,12 @@ namespace Produkte {
         let tsrIndex: number = parseInt(target.getAttribute("tsrIndex")!);
         zaehlerWagen.innerHTML = "" + clickZaehler;
 
+        
 
         if (clickZaehler > 0) {
-            zaehlerWagen.style.display = "block";
+            document.getElementById("einkaufswagen")?.appendChild(zaehlerWagen);
+            zaehlerWagen.innerHTML = clickZaehler.toString();
+        
         
             gesamtPreis = gesamtPreis + weine[tsrIndex].preis;
             console.log( gesamtPreis + "€");
