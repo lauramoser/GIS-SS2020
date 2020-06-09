@@ -85,23 +85,32 @@ var Produkte;
             console.log(gesamtPreis + "€");
         }
     }
-    document.getElementById("kategorie1")?.addEventListener("click", handlerLoeschen);
-    document.getElementById("kategorie2")?.addEventListener("click", handlerLoeschen);
-    document.getElementById("kategorie3")?.addEventListener("click", handlerLoeschen);
+    document.getElementById("traminer")?.addEventListener("click", handlerLoeschen);
+    document.getElementById("gnon")?.addEventListener("click", handlerLoeschen);
+    document.getElementById("ling")?.addEventListener("click", handlerLoeschen);
+    document.getElementById("alle")?.addEventListener("click", handlerLoeschen);
     function handlerLoeschen(_event) {
         let target = _event.target;
         let kategorie = target.getAttribute("href");
         if (kategorie == "#Gewürztraminer") {
-            document.getElementById("Sauvignon")?.setAttribute("style", "display : none");
-            document.getElementById("Riesling")?.setAttribute("style", "display : flex");
+            document.getElementById("SKat")?.setAttribute("style", "display : none");
+            document.getElementById("RKat")?.setAttribute("style", "display : none");
+            document.getElementById("GKat")?.setAttribute("style", "display : block");
         }
-        else if (kategorie == "#Sauvignon") {
-            document.getElementById("Gewürztraminer")?.setAttribute("style", "display : none");
-            document.getElementById("Riesling")?.setAttribute("style", "display : flex");
+        if (kategorie == "#Sauvignon") {
+            document.getElementById("GKat")?.setAttribute("style", "display : none");
+            document.getElementById("RKat")?.setAttribute("style", "display : none");
+            document.getElementById("SKat")?.setAttribute("style", "display : block");
         }
-        else {
-            document.getElementById("Gewürztraminer")?.setAttribute("style", "display : flex");
-            document.getElementById("Sauvignon")?.setAttribute("style", "display : flex");
+        if (kategorie == "#Riesling") {
+            document.getElementById("GKat")?.setAttribute("style", "display : none");
+            document.getElementById("SKat")?.setAttribute("style", "display : none");
+            document.getElementById("RKat")?.setAttribute("style", "display : block");
+        }
+        else if (kategorie == "#alleWeine") {
+            document.getElementById("GKat")?.setAttribute("style", "display : block");
+            document.getElementById("SKat")?.setAttribute("style", "display : block");
+            document.getElementById("RKat")?.setAttribute("style", "display : block");
         }
     }
 })(Produkte || (Produkte = {}));
