@@ -86,7 +86,15 @@ img[alt=einkaufswagen]{
 }
 
 #gesamtPreis{
-    
+    text-align: center;
+}
+
+#leeren{
+    text-align: center;
+}
+
+#logo {
+    text-align: center;
 }
 
 #Gewürztraminer, #Sauvignon, #Riesling  {
