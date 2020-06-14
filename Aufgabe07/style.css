@@ -25,7 +25,17 @@ label.name{
     color: white;
     font-size: 35px;
     line-height: 80px;
-    padding: 0 50px;
+    padding: 0 40px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+label.name a{
+    text-decoration: none;
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 40px;
     font-weight: bold;
 }
 
@@ -68,10 +78,16 @@ img[alt=einkaufswagen]{
     color: #7e5c5c;
     text-decoration: none;
     text-align: center;
+    display: inline-block;
 }
 
+#Korbüberschr{
+    text-align: center;
+}
 
-
+#gesamtPreis{
+    
+}
 
 #Gewürztraminer, #Sauvignon, #Riesling  {
     color: black;
@@ -82,7 +98,7 @@ img[alt=einkaufswagen]{
 }
 
 
-.traminerClass img, .sauvignonClass img, .rieslingClass img{
+.traminerClass img, .sauvignonClass img, .rieslingClass img, .warenkorbClass img{
     width: 100%;
     
 }
@@ -98,7 +114,7 @@ img[alt=einkaufswagen]{
 }
 
 
-.traminerClass, .sauvignonClass, .rieslingClass {
+.traminerClass, .sauvignonClass, .rieslingClass, .warenkorbClass{
 
     width: 30%;
     padding: 50px 1.5% 50px 1.5%;
@@ -114,6 +130,9 @@ h3::after {
 .bild{
     text-align: center;
 }
+
+
+
 
 @media screen and (max-width:600px){
     body{
