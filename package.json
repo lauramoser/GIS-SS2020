@@ -1,0 +1,21 @@
+{
+  "name": "gis-ss2020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node Aufgabe08/skript.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lauramoser/GIS-SS2020.git"
+  },
+  "author": "laura moser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lauramoser/GIS-SS2020/issues"
+  },
+  "homepage": "https://github.com/lauramoser/GIS-SS2020#readme"
+}
