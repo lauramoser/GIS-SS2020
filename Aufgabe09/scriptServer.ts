@@ -6,7 +6,7 @@ namespace Aufgabe09Server {
 
     function handleHtml(): void {
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string = "https://gissose2020laura.herokuapp.com";
+        let url: string = "http://localhost:8100/";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
         url = url + "?" + query.toString();
         communicateHTML(url);
@@ -15,7 +15,7 @@ namespace Aufgabe09Server {
 
     function handleJson(): void {
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string = "https://gissose2020laura.herokuapp.com";
+        let url: string = "http://localhost:8100/";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
         url = url + "?" + query.toString();
         communicateJSON(url);
