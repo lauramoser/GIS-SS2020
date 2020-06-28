@@ -25,6 +25,7 @@ export namespace Aufgabe09Server {
     
     if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+            console.log(url.query);
             for (let key in url.query) {
             _response.write(key + ":" + url.query[key] + "<br/>");
             }

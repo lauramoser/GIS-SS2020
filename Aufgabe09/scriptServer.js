@@ -5,14 +5,14 @@ var Aufgabe09Server;
     document.getElementById("buttonjson")?.addEventListener("click", handleJson);
     function handleHtml() {
         let formData = new FormData(document.forms[0]);
-        let url = "http://localhost:8100/";
+        let url = "https://gissose2020laura.herokuapp.com";
         let query = new URLSearchParams(formData);
         url = url + "?" + query.toString();
         communicateHTML(url);
     }
     function handleJson() {
         let formData = new FormData(document.forms[0]);
-        let url = "http://localhost:8100/";
+        let url = "https://gissose2020laura.herokuapp.com";
         let query = new URLSearchParams(formData);
         url = url + "?" + query.toString();
         communicateJSON(url);
@@ -27,8 +27,7 @@ var Aufgabe09Server;
         let antwort = await fetch(_url, { method: "get" });
         let antwort2 = await antwort.text();
         let arraySplit = antwort2.split("&&&");
-        console.log(arraySplit[0]);
-        let jsonString = JSON.parse(arraySplit[0]);
+        let jsonString = JSON.parse(arraySplit[1]);
         console.log(jsonString);
     }
 })(Aufgabe09Server || (Aufgabe09Server = {}));

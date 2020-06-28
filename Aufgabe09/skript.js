@@ -22,6 +22,7 @@ var Aufgabe09Server;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
+            console.log(url.query);
             for (let key in url.query) {
                 _response.write(key + ":" + url.query[key] + "<br/>");
             }

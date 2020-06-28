@@ -6,15 +6,16 @@ namespace Aufgabe09Server {
 
     function handleHtml(): void {
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string = "http://localhost:8100/";
+        let url: string = "https://gissose2020laura.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
         url = url + "?" + query.toString();
         communicateHTML(url);
+        
     } 
 
     function handleJson(): void {
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string = "http://localhost:8100/";
+        let url: string = "https://gissose2020laura.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
         url = url + "?" + query.toString();
         communicateJSON(url);
@@ -31,8 +32,7 @@ namespace Aufgabe09Server {
         let antwort: Response = await fetch(_url, { method: "get" });
         let antwort2: string = await antwort.text();
         let arraySplit: string[] = antwort2.split("&&&");
-        console.log(arraySplit[0]);
-        let jsonString: string = JSON.parse(arraySplit[0]);
+        let jsonString: string = JSON.parse(arraySplit[1]);
         console.log(jsonString);
         
       }
