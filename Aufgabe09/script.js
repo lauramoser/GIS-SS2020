@@ -5,7 +5,7 @@ var Aufgabe09;
     document.getElementById("buttonjson")?.addEventListener("click", handleJson);
     async function handleHtml() {
         let formData = new FormData(document.forms[0]);
-        let url = "http://localhost:8100/"; //Url wird als String gespeichert
+        let url = "https://gissose2020laura.herokuapp.com"; //Url wird als String gespeichert
         let query = new URLSearchParams(formData); //der Inhalt wird in die Variabel "query" gespeichert
         url = url + "/html" + "?" + query.toString(); //Ich initialier "url" mit der urprünglichen url, trenne es mit einem "?"
         //...,dem query (Inhalt) und füge dann /html hinzu
@@ -15,7 +15,7 @@ var Aufgabe09;
     }
     async function handleJson() {
         let formData = new FormData(document.forms[0]);
-        let url = "http://localhost:8100/";
+        let url = "https://gissose2020laura.herokuapp.com";
         let query = new URLSearchParams(formData);
         url = url + "/json" + "?" + query.toString();
         let antwort = await fetch(url, { method: "get" });
@@ -23,6 +23,7 @@ var Aufgabe09;
         console.log(antwort2); //Antwort wird in der Console ausgegeben                                       
     }
 })(Aufgabe09 || (Aufgabe09 = {}));
-//"http://localhost:8100/"
+//"http://localhost:8100"
 //"https://gissose2020laura.herokuapp.com"
+//node Aufgabe09/server.js
 //# sourceMappingURL=script.js.map

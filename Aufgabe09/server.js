@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Aufgabe09Server = void 0;
+exports.Aufgabe09 = void 0;
 const Http = require("http");
 const Url = require("url");
-var Aufgabe09Server;
-(function (Aufgabe09Server) {
+var Aufgabe09;
+(function (Aufgabe09) {
     console.log("Starting server");
     let port = Number(process.env.PORT);
     if (!port)
@@ -38,5 +38,5 @@ var Aufgabe09Server;
         //Abschicken an Client
         _response.end();
     }
-})(Aufgabe09Server = exports.Aufgabe09Server || (exports.Aufgabe09Server = {}));
+})(Aufgabe09 = exports.Aufgabe09 || (exports.Aufgabe09 = {}));
 //# sourceMappingURL=server.js.map
