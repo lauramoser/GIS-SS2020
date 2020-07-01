@@ -33,10 +33,11 @@ export namespace Aufgabe09 {
                     _response.write(key + ":" + url.query[key] + "<br/>");
                     }
             }                                                                            
-
+            
             if ( pathname == "/json") {
                 let jsonString: string = JSON.stringify(url.query);
                 _response.write(jsonString);
+                _response.setHeader("content-type", "text/json; charset=utf-8");
             }
             
             
