@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <title>Formular</title>
+</head>
+<body>
+    <div id="kontakt">
+        <br>
+        <a>Kontaktformular</a>
+        <br>
+        <br>
+        <form>
+            <input type="text" name="Vname">
+            <label>Vorname</label>
+            <br>
+            <input type="text" name="Nname" required>
+            <label>Nachname</label>
+            <br>
+            <input type="email" name="email">
+            <label>E-mail</label>
+            <br>
+            <textarea rows="4" name="nachricht" required></textarea>
+            <label>Nachricht</label>
+            <br>
+            <p>Mit Absenden der Nachricht bestätige ich den Datenschutz</p>
+            <br>
+            <button type="button" id="buttonhtml"> Abschicken mit Html </button>
+            <button type="button" id="buttonjson"> Abschicken mit Json </button>
+        </form>
+        <p id="ausgabe"></p>
+
+        
+    </div>
+</body>
+</html>
