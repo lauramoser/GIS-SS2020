@@ -7,7 +7,7 @@ export namespace Aufgabe11 {
     console.log("Starting server");
     let formular: Mongo.Collection;
     let port: number = Number(process.env.PORT);
-    let databaseUrl: string = "mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Test?retryWrites=true&w=majority";
+    let databaseUrl: string = "mongodb://localhost:27017";
     if (!port)
     port = 8100;
 
@@ -62,4 +62,5 @@ export namespace Aufgabe11 {
     }
 
 }
-
+//mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Test?retryWrites=true&w=majority
+//mongodb://localhost:27017

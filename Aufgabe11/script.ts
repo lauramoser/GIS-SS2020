@@ -6,7 +6,7 @@ namespace Aufgabe11 {
 
     async function handleAusgeben(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string = "https://gissose2020laura.herokuapp.com";              //Url wird als String gespeichert
+        let url: string = "http://localhost:8100";              //Url wird als String gespeichert
         let query: URLSearchParams = new URLSearchParams(<any> formData);        //der Inhalt wird in die Variabel "query" gespeichert
         url = url + "/anzeigen" + "?" + query.toString();                            //Ich initialier "url" mit der urprünglichen url, trenne es mit einem "?"
                                                                                  //...,dem query (Inhalt) und füge dann /ausgeben hinzu
@@ -17,7 +17,7 @@ namespace Aufgabe11 {
 
     async function handleSpeichern(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string = "https://gissose2020laura.herokuapp.com";
+        let url: string = "http://localhost:8100";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
         url = url + "/speichern" + "?" + query.toString();
         await fetch(url);
