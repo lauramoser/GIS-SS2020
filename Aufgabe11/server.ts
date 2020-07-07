@@ -2,31 +2,40 @@ import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
 
-export namespace Aufgabe11{
-    
+export namespace Aufgabe11 {
+
     console.log("Starting server");
+    let formular: Mongo.Collection;
     let port: number = Number(process.env.PORT);
+    let databaseUrl: string = "mongodb://localhost:8100";
     if (!port)
     port = 8100;
-    
-    
-    let server: Http.Server = Http.createServer();
 
-    //let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
-    //await mongoClient.connect();
-    
-    //let orders: Mongo.Collection = mongoClient.db("Test").collection("Students");
-    //orders.insert({...});
-    
+    startServer(port);
+    connectToDatabase(databaseUrl);
+
+    function startServer(_port: number | string): void {
+    let server: Http.Server = Http.createServer();
+   
     server.addListener("request", handleRequest);
     server.addListener("listening", handleListen);
-    server.listen(port);
-    
-    function handleListen(): void {
-    console.log("Listening");
+    server.listen(_port);
+    } 
+
+    async function connectToDatabase(_url: string): Promise <void> {
+        let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
+        let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+        await mongoClient.connect();
+        formular = mongoClient.db("Test").collection("Students");
+        console.log("Database connection", formular != undefined);
     }
     
-    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+
+    function handleListen(): void {
+    console.log("Listening");
+}
+
+    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
     //setHeader: gibt mir die Informationen wie die Eingabe aufgebaut ist
     //und WER auf WAS Zugriff darauf hat
     _response.setHeader("content-type", "text/html; charset=utf-8");
@@ -34,25 +43,23 @@ export namespace Aufgabe11{
     
     if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true); 
-            let pathname: String | null  = url.pathname;                                //mein pathname ist ein String & ich bestimme welcher Teil des Urls hier initialisiert wird
+            let pathname: String | null  = url.pathname;                             
                                                                                         
-            if ( pathname == "/html") {                                                 //wenn der pathname gleich /html ist 
-                for (let key in url.query) {                                            //beginnt die for Schleife, die meine keys mit dem passendem Inhalt als Html Text ausgibt
-                    _response.write(key + ":" + url.query[key] + "<br/>");
-                    }
+            if ( pathname == "/anzeigen") {                                          
+                _response.write(JSON.stringify(await formular.find().toArray()));
+                //_response.setHeader("content-type", "text/json; charset=utf-8");
+                //formular.find(url.query)
             }                                                                            
             
-            if ( pathname == "/json") {
-                let jsonString: string = JSON.stringify(url.query);
-                _response.write(jsonString);
-                _response.setHeader("content-type", "text/json; charset=utf-8");
+            if ( pathname == "/speichern") {
+            //db.Students.insert(doc)                                               //Befehl "insert" fügt die Daten in die Datenbank
+            formular.insert(url.query);                                             //url.query ist das was eingegeben wurde                                              
             }
-            
-            
-        }
+   }
+
     //Abschicken an Client
     _response.end();
-
     }
+
 }
 
