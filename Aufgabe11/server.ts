@@ -67,4 +67,3 @@ export namespace Aufgabe11 {
 }
 //mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Test?retryWrites=true&w=majority
 //mongodb://localhost:27017
-//_response.write(JSON.stringify(await orders.find().toArray()));
