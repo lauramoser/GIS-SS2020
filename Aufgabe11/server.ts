@@ -7,7 +7,7 @@ export namespace Aufgabe11 {
     console.log("Starting server");
     let formular: Mongo.Collection;
     let port: number = Number(process.env.PORT);
-    let databaseUrl: string = "mongodb://localhost:27017";
+    let databaseUrl: string = "mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Test?retryWrites=true&w=majority";
     if (!port)
     port = 8100;
 
@@ -35,25 +35,28 @@ export namespace Aufgabe11 {
     console.log("Listening");
 }
 
-    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise <void> {
     //setHeader: gibt mir die Informationen wie die Eingabe aufgebaut ist
     //und WER auf WAS Zugriff darauf hat
-    _response.setHeader("content-type", "text/html; charset=utf-8");
+    _response.setHeader("content-type", "text/json; charset=utf-8");
     _response.setHeader("Access-Control-Allow-Origin", "*");
     
     if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true); 
             let pathname: String | null  = url.pathname;                             
                                                                                         
-            if ( pathname == "/anzeigen") {                                          
-                _response.write(JSON.stringify(await formular.find().toArray()));
+            if ( pathname == "/anzeigen") {  
+                let cursor: Mongo.Cursor = await formular.find();
+                let array: any[] = await cursor.toArray();                                        
+                _response.write(JSON.stringify(array));
+                //_response.write(await)
                 //_response.setHeader("content-type", "text/json; charset=utf-8");
                 //formular.find(url.query)
             }                                                                            
             
             if ( pathname == "/speichern") {
-            //db.Students.insert(doc)                                               //Befehl "insert" fügt die Daten in die Datenbank
-            formular.insert(url.query);                                             //url.query ist das was eingegeben wurde                                              
+                //db.Students.insert(doc)                                               //Befehl "insert" fügt die Daten in die Datenbank
+                formular.insertOne(url.query);                                             //url.query ist das was eingegeben wurde                                              
             }
    }
 
@@ -64,3 +67,4 @@ export namespace Aufgabe11 {
 }
 //mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Test?retryWrites=true&w=majority
 //mongodb://localhost:27017
+//_response.write(JSON.stringify(await orders.find().toArray()));
