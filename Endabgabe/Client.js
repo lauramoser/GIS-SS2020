@@ -2,7 +2,7 @@
 var Endabgabe;
 (function (Endabgabe) {
     document.getElementById("registrieren")?.addEventListener("click", handleSpeichern);
-    document.getElementById("einloggen")?.addEventListener("click", handlePrüfen);
+    document.getElementById("login")?.addEventListener("click", handlePrüfen);
     document.getElementById("schicken")?.addEventListener("click", handleSchicken);
     async function handleSpeichern() {
         let formData = new FormData(document.forms[0]);
@@ -18,6 +18,8 @@ var Endabgabe;
         let query = new URLSearchParams(formData);
         url = url + "/login" + "?" + query.toString();
         await fetch(url);
+        if (x == true)
+            ;
     }
     async function handleSchicken() {
         let formData = new FormData(document.forms[0]);

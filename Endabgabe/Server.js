@@ -9,7 +9,7 @@ var Endabgabe;
     console.log("Starting server");
     let daten;
     let port = Number(process.env.PORT);
-    let databaseUrl = "//mongodb://localhost:27017";
+    let databaseUrl = "mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Chatroom?retryWrites=true&w=majority";
     if (!port)
         port = 8100;
     startServer(port);
@@ -24,7 +24,7 @@ var Endabgabe;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        daten = mongoClient.db("Test").collection("Students");
+        daten = mongoClient.db("Chatroom").collection("User"); //Datenbank Chatrrom und collection User in "daten" speichern
         console.log("Database connection", daten != undefined);
     }
     function handleListen() {
@@ -44,12 +44,21 @@ var Endabgabe;
                 daten.insertOne(url.query);
             }
             if (pathname == "/login") {
+                let x = false;
+                let vorname = daten.find({ Vname: [] }); //der Vorname der beim Login eingegeben wurde
+                if (daten.find({ Vname: vorname })) {
+                    //
+                    //<a href="Chatrooms.html"></a>
+                }
+                else {
+                    //
+                }
             }
         }
         //Abschicken an Client
         _response.end();
     }
 })(Endabgabe = exports.Endabgabe || (exports.Endabgabe = {}));
-//mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Test?retryWrites=true&w=majority
+//mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Chatroom?retryWrites=true&w=majority
 //mongodb://localhost:27017
 //# sourceMappingURL=Server.js.map

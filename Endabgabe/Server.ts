@@ -6,7 +6,7 @@ export namespace Endabgabe{
     console.log("Starting server");
     let daten: Mongo.Collection;
     let port: number = Number(process.env.PORT);
-    let databaseUrl: string = "//mongodb://localhost:27017";
+    let databaseUrl: string = "mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Chatroom?retryWrites=true&w=majority";
     if (!port)
     port = 8100;
 
@@ -24,14 +24,12 @@ export namespace Endabgabe{
         let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        daten = mongoClient.db("Chatroom").collection("User");
+        daten = mongoClient.db("Chatroom").collection("User"); //Datenbank Chatrrom und collection User in "daten" speichern
         console.log("Database connection", daten != undefined);
     }
-    
-
     function handleListen(): void {
     console.log("Listening");
-}
+    }
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise <void> {
     //setHeader: gibt mir die Informationen wie die Eingabe aufgebaut ist
@@ -41,7 +39,7 @@ export namespace Endabgabe{
     
     if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true); 
-            let pathname: String | null  = url.pathname;                             
+            let pathname: String | null  = url.pathname;                           
                        
             if ( pathname == "/speichern") {
                 //Befehl "insert" fügt die Daten in die Datenbank
@@ -49,9 +47,19 @@ export namespace Endabgabe{
                 daten.insertOne(url.query);                                                                                     
             }
 
-            if ( pathname == "/login") {  
-                
-            }                                                                            
+            if ( pathname == "/login") { 
+                let x = false;
+                let vorname: Mongo.Cursor = daten.find({Vname: []});        //der Vorname der beim Login eingegeben wurde
+
+                if (daten.find({Vname: vorname})) {
+                   //
+                    //<a href="Chatrooms.html"></a>
+                }
+                else {
+                    //
+                    
+                }
+           }                                                                            
             
             
    }
@@ -61,5 +69,5 @@ export namespace Endabgabe{
     }
 
 }
-//mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Test?retryWrites=true&w=majority
+//mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Chatroom?retryWrites=true&w=majority
 //mongodb://localhost:27017

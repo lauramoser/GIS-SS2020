@@ -1,12 +1,12 @@
 namespace Endabgabe {
 
     document.getElementById("registrieren")?.addEventListener("click", handleSpeichern);
-    document.getElementById("einloggen")?.addEventListener("click", handlePrüfen );
+    document.getElementById("login")?.addEventListener("click", handlePrüfen );
     document.getElementById("schicken")?.addEventListener("click", handleSchicken);
     
     async function handleSpeichern(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string ="http://localhost:8100";
+        let url: string = "http://localhost:8100";
         //let url: string = "https://gissose2020laura.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
         url = url + "/speichern" + "?" + query.toString();
@@ -20,6 +20,8 @@ namespace Endabgabe {
         url = url + "/login" + "?" + query.toString();
         await fetch(url);
 
+        if(x == true);
+
     }
 
     async function handleSchicken(): Promise<void> {
@@ -31,7 +33,7 @@ namespace Endabgabe {
         await fetch(url);
     }
 
-    if()
+    
 
 }
 //"http://localhost:8100"
