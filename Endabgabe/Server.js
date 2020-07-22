@@ -45,13 +45,38 @@ var Endabgabe;
             }
             if (pathname == "/login") {
                 let x = false;
-                let vorname = daten.find({ Vname: [] }); //der Vorname der beim Login eingegeben wurde
-                if (daten.find({ Vname: vorname })) {
-                    //
-                    //<a href="Chatrooms.html"></a>
+                console.log("x:" + x);
+                let inhalt = "";
+                for (let key in url.query) {
+                    //inhalt der gegeben wurde mit ":" "/" trennen                                          
+                    inhalt += (key + ":" + url.query[key] + "#");
+                }
+                //Da wo "/" ist teilen Vname:Laura--> [0] / Nname:Moser --> [1] / password:1234--> [2]
+                let inhaltGeteilt1 = inhalt.split("#");
+                //Den [0] in "inhaltVorname" speichern
+                let inhaltVorname = inhaltGeteilt1[0];
+                console.log("inhaltVorname" + inhaltVorname);
+                //Da wo ":" den "inhaltVorname" nochmal spliten 
+                //Vname--> [0] / Laura-->[1]
+                let vornameZsm = inhaltVorname.split(":");
+                //Den [1] in "vornameZsm" speichern / muss "Laura sein"
+                let vorname = vornameZsm[1];
+                console.log(vorname);
+                let vornameInDb = await daten.find().toArray();
+                let vornameInDbString = JSON.stringify(vornameInDb);
+                //let vornameInDb: Mongo.Cursor = daten.find({Vname: []});
+                //let vornameInDbString: string = vornameInDb.toString();     
+                //console.log("Test: " + vornameInDbString);
+                if (vornameInDbString.includes(vorname)) {
+                    x = true;
+                    let gefunden = x.toString();
+                    _response.write(gefunden);
+                    console.log("True/False: " + gefunden);
                 }
                 else {
-                    //
+                    let nichtVorhanden = x.toString();
+                    _response.write(nichtVorhanden);
+                    console.log("False/True: " + nichtVorhanden);
                 }
             }
         }

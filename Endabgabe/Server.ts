@@ -1,8 +1,9 @@
 import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
+import { userInfo } from "os";
 
-export namespace Endabgabe{
+export namespace Endabgabe {
     console.log("Starting server");
     let daten: Mongo.Collection;
     let port: number = Number(process.env.PORT);
@@ -48,22 +49,46 @@ export namespace Endabgabe{
             }
 
             if ( pathname == "/login") { 
-                let x = false;
-                let vorname: Mongo.Cursor = daten.find({Vname: []});        //der Vorname der beim Login eingegeben wurde
+                let x: boolean = false;
+                console.log("x:" + x);
+                let inhalt: string = "";
+                for (let key in url.query) {  
+                    //inhalt der gegeben wurde mit ":" "/" trennen                                          
+                    inhalt += (key + ":" + url.query[key] + "#");           
+                    }
+                //Da wo "/" ist teilen Vname:Laura--> [0] / Nname:Moser --> [1] / password:1234--> [2]
+                let inhaltGeteilt1: string[] = inhalt.split("#");
+                //Den [0] in "inhaltVorname" speichern
+                let inhaltVorname: string = inhaltGeteilt1[0];
+                console.log("inhaltVorname" + inhaltVorname);
+                //Da wo ":" den "inhaltVorname" nochmal spliten 
+                //Vname--> [0] / Laura-->[1]
+                let vornameZsm: string [] = inhaltVorname.split(":");
+                //Den [1] in "vornameZsm" speichern / muss "Laura sein"
+                let vorname: string = vornameZsm[1];
+                console.log(vorname);
+                
 
-                if (daten.find({Vname: vorname})) {
-                   //
-                    //<a href="Chatrooms.html"></a>
+                let vornameInDb: string[] = await daten.find().toArray();
+                let vornameInDbString: string = JSON.stringify(vornameInDb);
+
+                //let vornameInDb: Mongo.Cursor = daten.find({Vname: []});
+                //let vornameInDbString: string = vornameInDb.toString();     
+                //console.log("Test: " + vornameInDbString);
+                
+                if (vornameInDbString.includes(vorname)) {
+                    x = true;                                               
+                    let gefunden: string = x.toString();                    
+                    _response.write(gefunden);   
+                    console.log("True/False: " + gefunden);                           
                 }
                 else {
-                    //
-                    
+                    let nichtVorhanden: string = x.toString();
+                    _response.write(nichtVorhanden);    
+                    console.log("False/True: " + nichtVorhanden);
                 }
-           }                                                                            
-            
-            
+           }                                                                                      
    }
-
     //Abschicken an Client
     _response.end();
     }

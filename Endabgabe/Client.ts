@@ -1,7 +1,7 @@
 namespace Endabgabe {
 
     document.getElementById("registrieren")?.addEventListener("click", handleSpeichern);
-    document.getElementById("login")?.addEventListener("click", handlePrüfen );
+    document.getElementById("einloggenButton")?.addEventListener("click", handlePrüfen );
     document.getElementById("schicken")?.addEventListener("click", handleSchicken);
     
     async function handleSpeichern(): Promise<void> {
@@ -18,9 +18,18 @@ namespace Endabgabe {
         let url: string = "http://localhost:8100";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
         url = url + "/login" + "?" + query.toString();
-        await fetch(url);
+        
+        let antwort: Response = await fetch(url, { method: "get" });
+        let antwort2: string = await antwort.text(); 
+        console.log(antwort2);
+        
 
-        if(x == true);
+        if (antwort2 == "true") {
+            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Chatrooms.html";
+        }
+        else if (antwort2 == "false") {
+            //(<HTMLElement>document.getElementById("fehlermeldung")).innerHTML =
+        }
 
     }
 
