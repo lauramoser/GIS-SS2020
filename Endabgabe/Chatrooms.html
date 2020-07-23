@@ -15,9 +15,16 @@
         <p>Viel Spaß beim chatten :D</p>
     </div>
 
-    <ul class="navigation">
-        <a href="#raum1"> <img src="Gruppenbild_1.jpg" alt="profil1"></a>  
-        <a href="#raum2"> <img src="Gruppenbild_2.jpg" alt="profil2"></a>
+    <ul class="navigation"></ul>
+        <div id="nav1">
+            <img src="Gruppenbild_1.jpg" alt="profil1">
+            <a href="#raum1" id="r1"> Chatroom 1</a>
+        </div>
+        <br>
+        <div id="nav2">
+            <img src="Gruppenbild_2.jpg" alt="profil2"> 
+            <a href="#raum2" id="r2"> Chatroom 2</a>
+        </div>       
     </ul>
       
 
@@ -25,6 +32,9 @@
         <div id="oben">
             <img src="Gruppenbild_1.jpg" alt="profil1">
             <p>Medieninformatik</p>
+        </div>
+        <div id="nachrichtenID">
+            <p id="ausgabe"></p>
         </div>
         <div id="unten">
             <form>
@@ -39,9 +49,12 @@
             <img src="Gruppenbild_2.jpg" alt="profil2">
             <p>Die Gang</p>
         </div>
+        <div id="nachrichtenID2">
+            <p id="ausgabe2"></p>
+        </div>
         <div id="unten">
             <form>
-                <input type="text" id="nachrichtChat2" name="textnachricht">
+                <input type="text" id="nachrichtChat2" name="textnachricht2">
                 <button id="schicken2">send</button>  
             </form> 
         </div>     

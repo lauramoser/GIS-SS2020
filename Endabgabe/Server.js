@@ -38,6 +38,7 @@ var Endabgabe;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             let pathname = url.pathname;
+            let inhalt = "";
             if (pathname == "/speichern") {
                 //Befehl "insert" fügt die Daten in die Datenbank
                 //url.query ist das was eingegeben wurde  
@@ -46,12 +47,11 @@ var Endabgabe;
             if (pathname == "/login") {
                 let x = false;
                 console.log("x:" + x);
-                let inhalt = "";
                 for (let key in url.query) {
                     //inhalt der gegeben wurde mit ":" "/" trennen                                          
                     inhalt += (key + ":" + url.query[key] + "#");
                 }
-                //Da wo "/" ist teilen Vname:Laura--> [0] / Nname:Moser --> [1] / password:1234--> [2]
+                //Da wo "#" ist teilen Vname:Laura--> [0] / Nname:Moser --> [1] / password:1234--> [2]
                 let inhaltGeteilt1 = inhalt.split("#");
                 //Den [0] in "inhaltVorname" speichern
                 let inhaltVorname = inhaltGeteilt1[0];
@@ -77,7 +77,20 @@ var Endabgabe;
                     let nichtVorhanden = x.toString();
                     _response.write(nichtVorhanden);
                     console.log("False/True: " + nichtVorhanden);
+                    //stopp/ return 
                 }
+            }
+            if (pathname == "/schicken") {
+                //nachricht speichern
+                daten.insertOne(url.query);
+                //nachricht aus Datenbank holen
+                let cursor = daten.find({ textnachricht: [] });
+                console.log(cursor);
+                let array = await cursor.toArray();
+                _response.write(JSON.stringify(array));
+                /*let textElement: HTMLParagraphElement = document.createElement("input");
+                textElement.innerHTML = <string> localStorage.getItem(");
+                document.getElementById("tsr" + i)?.appendChild(textElement);*/
             }
         }
         //Abschicken an Client
@@ -86,4 +99,13 @@ var Endabgabe;
 })(Endabgabe = exports.Endabgabe || (exports.Endabgabe = {}));
 //mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Chatroom?retryWrites=true&w=majority
 //mongodb://localhost:27017
+/*for (let key in url.query) {
+    //inhalt der gegeben wurde mit ":" "/" trennen
+    inhalt += (key + ":" + url.query[key] + "#");
+    }
+let inhaltGeteilt1: string[] = inhalt.split("#");
+for (let i: number = 0, i < inhaltGeteilt1.length -1, i++) {
+    let inhaltAlles: string[] = inhaltGeteilt1[i];
+    
+}*/ 
 //# sourceMappingURL=Server.js.map

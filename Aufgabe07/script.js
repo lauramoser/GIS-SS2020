@@ -93,6 +93,7 @@ var Produkte;
     function handlerLoeschen(_event) {
         let target = _event.target;
         let kategorie = target.getAttribute("href");
+        console.log(target);
         if (kategorie == "#Gewürztraminer") {
             document.getElementById("SKat")?.setAttribute("style", "display : none");
             document.getElementById("RKat")?.setAttribute("style", "display : none");

@@ -1,7 +1,7 @@
 import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
-import { userInfo } from "os";
+
 
 export namespace Endabgabe {
     console.log("Starting server");
@@ -40,7 +40,8 @@ export namespace Endabgabe {
     
     if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true); 
-            let pathname: String | null  = url.pathname;                           
+            let pathname: String | null  = url.pathname;  
+            let inhalt: string = "";                         
                        
             if ( pathname == "/speichern") {
                 //Befehl "insert" fügt die Daten in die Datenbank
@@ -51,12 +52,12 @@ export namespace Endabgabe {
             if ( pathname == "/login") { 
                 let x: boolean = false;
                 console.log("x:" + x);
-                let inhalt: string = "";
+                
                 for (let key in url.query) {  
                     //inhalt der gegeben wurde mit ":" "/" trennen                                          
                     inhalt += (key + ":" + url.query[key] + "#");           
                     }
-                //Da wo "/" ist teilen Vname:Laura--> [0] / Nname:Moser --> [1] / password:1234--> [2]
+                //Da wo "#" ist teilen Vname:Laura--> [0] / Nname:Moser --> [1] / password:1234--> [2]
                 let inhaltGeteilt1: string[] = inhalt.split("#");
                 //Den [0] in "inhaltVorname" speichern
                 let inhaltVorname: string = inhaltGeteilt1[0];
@@ -86,8 +87,28 @@ export namespace Endabgabe {
                     let nichtVorhanden: string = x.toString();
                     _response.write(nichtVorhanden);    
                     console.log("False/True: " + nichtVorhanden);
-                }
-           }                                                                                      
+                    //stopp/ return 
+                }  
+            }  
+            if ( pathname == "/schicken") {
+                //nachricht speichern
+                daten.insertOne(url.query);
+
+                //nachricht aus Datenbank holen
+                let cursor: Mongo.Cursor = daten.find({textnachricht: []});
+                console.log(cursor);
+                let array: any[] = await cursor.toArray(); 
+                _response.write(JSON.stringify(array)); 
+                
+                
+                
+                /*let textElement: HTMLParagraphElement = document.createElement("input");
+                textElement.innerHTML = <string> localStorage.getItem(");
+                document.getElementById("tsr" + i)?.appendChild(textElement);*/
+            }
+           
+ 
+
    }
     //Abschicken an Client
     _response.end();
@@ -96,3 +117,13 @@ export namespace Endabgabe {
 }
 //mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Chatroom?retryWrites=true&w=majority
 //mongodb://localhost:27017
+
+/*for (let key in url.query) {  
+    //inhalt der gegeben wurde mit ":" "/" trennen                                          
+    inhalt += (key + ":" + url.query[key] + "#");           
+    }
+let inhaltGeteilt1: string[] = inhalt.split("#");
+for (let i: number = 0, i < inhaltGeteilt1.length -1, i++) {
+    let inhaltAlles: string[] = inhaltGeteilt1[i];
+    
+}*/

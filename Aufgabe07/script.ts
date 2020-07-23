@@ -124,6 +124,7 @@ namespace Produkte {
     function handlerLoeschen(_event: Event): void {
         let target: HTMLElement = (<HTMLElement>_event.target);
         let kategorie: string = target.getAttribute("href")!;
+        console.log(target);
 
         if (kategorie == "#Gewürztraminer") {
             document.getElementById("SKat")?.setAttribute("style", "display : none");
