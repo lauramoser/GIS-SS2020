@@ -8,6 +8,7 @@ var Endabgabe;
 (function (Endabgabe) {
     console.log("Starting server");
     let daten;
+    let chat;
     let port = Number(process.env.PORT);
     let databaseUrl = "mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Chatroom?retryWrites=true&w=majority";
     if (!port)
@@ -25,6 +26,7 @@ var Endabgabe;
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         daten = mongoClient.db("Chatroom").collection("User"); //Datenbank Chatrrom und collection User in "daten" speichern
+        chat = mongoClient.db("Chatroom").collection("Nachrichten");
         console.log("Database connection", daten != undefined);
     }
     function handleListen() {
@@ -81,10 +83,10 @@ var Endabgabe;
                 }
             }
             if (pathname == "/schicken") {
-                //nachricht speichern
-                daten.insertOne(url.query);
+                //nachricht speichern in collection "chat"
+                chat.insertOne(url.query);
                 //nachricht aus Datenbank holen
-                let cursor = daten.find({ textnachricht: [] });
+                let cursor = chat.find();
                 console.log(cursor);
                 let array = await cursor.toArray();
                 _response.write(JSON.stringify(array));

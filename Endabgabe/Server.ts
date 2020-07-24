@@ -6,6 +6,7 @@ import * as Mongo from "mongodb";
 export namespace Endabgabe {
     console.log("Starting server");
     let daten: Mongo.Collection;
+    let chat: Mongo.Collection;
     let port: number = Number(process.env.PORT);
     let databaseUrl: string = "mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Chatroom?retryWrites=true&w=majority";
     if (!port)
@@ -26,6 +27,7 @@ export namespace Endabgabe {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         daten = mongoClient.db("Chatroom").collection("User"); //Datenbank Chatrrom und collection User in "daten" speichern
+        chat = mongoClient.db("Chatroom").collection("Nachrichten");
         console.log("Database connection", daten != undefined);
     }
     function handleListen(): void {
@@ -91,11 +93,11 @@ export namespace Endabgabe {
                 }  
             }  
             if ( pathname == "/schicken") {
-                //nachricht speichern
-                daten.insertOne(url.query);
+                //nachricht speichern in collection "chat"
+                chat.insertOne(url.query);
 
                 //nachricht aus Datenbank holen
-                let cursor: Mongo.Cursor = daten.find({textnachricht: []});
+                let cursor: Mongo.Cursor = chat.find();
                 console.log(cursor);
                 let array: any[] = await cursor.toArray(); 
                 _response.write(JSON.stringify(array)); 
