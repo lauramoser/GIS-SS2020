@@ -37,18 +37,29 @@ var Endabgabe;
         url = url + "/schicken" + "?" + query.toString();
         let antwort = await fetch(url, { method: "get" });
         let antwort2 = await antwort.text();
-        document.getElementById("ausgabe").innerHTML = antwort2;
+        console.log("Test: " + antwort2);
+        //String splitten
+        for (let index = 0; index < antwort2.length; index++) {
+            let inhaltGeteilt = antwort2[index].split(",");
+            let inhaltNachr = inhaltGeteilt[0];
+            console.log("inhaltNachr: " + inhaltNachr); //[ 
+            let nachrZsm = inhaltNachr.split(":"); //!!!
+            console.log("Felix: " + nachrZsm);
+            let nachr = nachrZsm[1];
+            console.log("Laura: " + nachr);
+            document.getElementById("ausgabe").innerHTML = nachr;
+        }
     }
     document.getElementById("raum1")?.setAttribute("style", "display : none");
     document.getElementById("raum2")?.setAttribute("style", "display : none");
     function handlerLoeschen(_event) {
         let target = _event.target;
-        let kategorie = target.getAttribute("href");
-        if (kategorie == "#raum1") {
+        let kategorie = target.getAttribute("id");
+        if (kategorie == "r1") {
             document.getElementById("raum2")?.setAttribute("style", "display : none");
             document.getElementById("raum1")?.setAttribute("style", "display : block");
         }
-        else if (kategorie == "#raum2") {
+        else if (kategorie == "r2") {
             document.getElementById("raum1")?.setAttribute("style", "display : none");
             document.getElementById("raum2")?.setAttribute("style", "display : block");
         }

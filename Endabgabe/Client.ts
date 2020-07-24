@@ -37,6 +37,7 @@ namespace Endabgabe {
     }
 
     async function handleSchicken(): Promise<void> {
+        
         let formData: FormData = new FormData(document.forms[0]);
         let url: string = "http://localhost:8100";
         //let url: string = "https://gissose2020laura.herokuapp.com";
@@ -45,27 +46,37 @@ namespace Endabgabe {
         
         let antwort: Response = await fetch(url, { method: "get" });
         let antwort2: string = await antwort.text();
-        (<HTMLElement>document.getElementById("ausgabe")).innerHTML  = antwort2;
+        
+        console.log("Test: " + antwort2);
+
+        //String splitten
+        for (let index: number = 0; index < antwort2.length; index++) {
+            let inhaltGeteilt: string[] = antwort2[index].split(",");
+            let inhaltNachr: string = inhaltGeteilt[0];
+            console.log("inhaltNachr: " + inhaltNachr); //[ 
+            let nachrZsm: string [] = inhaltNachr.split(":"); //!!!
+            console.log("Felix: " + nachrZsm);
+            let nachr: string = nachrZsm[1];
+            console.log("Laura: " + nachr);
+            (<HTMLElement>document.getElementById("ausgabe")).innerHTML  = nachr;  
+        }
     }
 
     document.getElementById("raum1")?.setAttribute("style", "display : none");
-    document.getElementById("raum2")?.setAttribute("style", "display : none");
+    document.getElementById("raum2")?.setAttribute("style", "display : none");    
 
     function handlerLoeschen(_event: Event): void {
         let target: HTMLElement = (<HTMLElement>_event.target);
-        let kategorie: string = target.getAttribute("href")!;
+        let kategorie: string = target.getAttribute("id")!;
 
-        if (kategorie == "#raum1") {
+        if (kategorie == "r1") {
             document.getElementById("raum2")?.setAttribute("style", "display : none");
             document.getElementById("raum1")?.setAttribute("style", "display : block");
-        } else if (kategorie == "#raum2") {
+        } else if (kategorie == "r2") {
             document.getElementById("raum1")?.setAttribute("style", "display : none");
             document.getElementById("raum2")?.setAttribute("style", "display : block");
         }
     }
-
-    
-
 }
 //"http://localhost:8100"
 //"https://gissose2020laura.herokuapp.com"

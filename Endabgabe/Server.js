@@ -8,7 +8,8 @@ var Endabgabe;
 (function (Endabgabe) {
     console.log("Starting server");
     let daten;
-    let chat;
+    let chat1;
+    let chat2;
     let port = Number(process.env.PORT);
     let databaseUrl = "mongodb+srv://MyMongoDBUser:Studium2019@gis-ist-geil.zqrzt.mongodb.net/Chatroom?retryWrites=true&w=majority";
     if (!port)
@@ -25,8 +26,9 @@ var Endabgabe;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        daten = mongoClient.db("Chatroom").collection("User"); //Datenbank Chatrrom und collection User in "daten" speichern
-        chat = mongoClient.db("Chatroom").collection("Nachrichten");
+        daten = mongoClient.db("Chatroom").collection("User"); //Datenbank Chatroom und collection User in "daten" speichern
+        chat1 = mongoClient.db("Chatroom").collection("Nachrichten");
+        chat2 = mongoClient.db("Chatroom").collection("Nachrichten2");
         console.log("Database connection", daten != undefined);
     }
     function handleListen() {
@@ -57,19 +59,20 @@ var Endabgabe;
                 let inhaltGeteilt1 = inhalt.split("#");
                 //Den [0] in "inhaltVorname" speichern
                 let inhaltVorname = inhaltGeteilt1[0];
-                console.log("inhaltVorname" + inhaltVorname);
+                let inhaltPasswort = inhaltGeteilt1[2];
                 //Da wo ":" den "inhaltVorname" nochmal spliten 
                 //Vname--> [0] / Laura-->[1]
                 let vornameZsm = inhaltVorname.split(":");
+                let passwortZsm = inhaltPasswort.split(":");
                 //Den [1] in "vornameZsm" speichern / muss "Laura sein"
                 let vorname = vornameZsm[1];
-                console.log(vorname);
-                let vornameInDb = await daten.find().toArray();
-                let vornameInDbString = JSON.stringify(vornameInDb);
+                let passwort = passwortZsm[1];
+                let allesInDb = await daten.find().toArray();
+                let allesInDbString = JSON.stringify(allesInDb);
                 //let vornameInDb: Mongo.Cursor = daten.find({Vname: []});
                 //let vornameInDbString: string = vornameInDb.toString();     
                 //console.log("Test: " + vornameInDbString);
-                if (vornameInDbString.includes(vorname)) {
+                if (allesInDbString.includes(vorname) && allesInDbString.includes(passwort)) {
                     x = true;
                     let gefunden = x.toString();
                     _response.write(gefunden);
@@ -84,11 +87,11 @@ var Endabgabe;
             }
             if (pathname == "/schicken") {
                 //nachricht speichern in collection "chat"
-                chat.insertOne(url.query);
-                //nachricht aus Datenbank holen
-                let cursor = chat.find();
-                console.log(cursor);
+                chat1.insertOne(url.query);
+                //alles aus Datenbank holen
+                let cursor = chat1.find();
                 let array = await cursor.toArray();
+                //Datenbankinhalt an Client schicken                
                 _response.write(JSON.stringify(array));
                 /*let textElement: HTMLParagraphElement = document.createElement("input");
                 textElement.innerHTML = <string> localStorage.getItem(");
@@ -108,6 +111,6 @@ var Endabgabe;
 let inhaltGeteilt1: string[] = inhalt.split("#");
 for (let i: number = 0, i < inhaltGeteilt1.length -1, i++) {
     let inhaltAlles: string[] = inhaltGeteilt1[i];
-    
+
 }*/ 
 //# sourceMappingURL=Server.js.map

@@ -15,7 +15,8 @@ img[alt=profil1], img[alt=profil2]{
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    margin-left: 0;
+    margin-left: 10px;
+    margin-top: 20px;
 }
 #nav1, #nav2{
     width: 300px;
@@ -24,11 +25,13 @@ img[alt=profil1], img[alt=profil2]{
     border-color: black;
     border-style: solid;
 }
-#nav1 a, #nav2 a{
+#nav1 button, #nav2 button{
     text-decoration: none;
     color: black;
     font-size: 20px;
-    text-align: center;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
 }
 #raum1, #raum2{
     width: 50%;
