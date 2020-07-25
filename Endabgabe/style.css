@@ -18,9 +18,12 @@ img[alt=profil1], img[alt=profil2]{
     margin-left: 10px;
     margin-top: 20px;
 }
+li{
+    list-style-type: none;
+}
 #nav1, #nav2{
     width: 300px;
-    margin-left: 37%;
+    margin-left: 38%;
     border-width: 5px;
     border-color: black;
     border-style: solid;
@@ -34,35 +37,38 @@ img[alt=profil1], img[alt=profil2]{
     margin-bottom: 30px;
     border-radius: 10px;
 }
+#abmelden{
+    position: sticky;
+    top: 5px;
+}
 #raum1, #raum2{
     width: 50%;
-    height: 400px;
+    height: 500px;
     background-color: rgb(49, 142, 165);
-    margin-left: 25%;
-    margin-top: 20%;
     margin: 20% 25% 10% 25%;
 }
-#oben{
+#oben1, #oben2{
     background-color: #7e5c5c;
     height: 15%;
     width: 100%;
     display: flex;
     flex-direction: row;
 }
-#oben img{
+#oben1 img, #oben2 img{
     margin: 5px 0 0 10px;
 }
-#oben p{
+#oben1 p, #oben2 p{
     margin: 20px 0 0 10px;
 }
-#unten{
-    margin: 10px 0 0 5px;
+#unten1, #unten2{
+    margin: 1% 0 0 7.8%;
 }
-#unten input{
-    width: 82%;
+#nachrichtChat1, #nachrichtChat2{
+    width: 91.5%;
 }
-#unten button{
-    width: 15%;
+#unten1 button, #unten2 button{
+    width: 100px;
+    
 }
 #nachrichtenID, #nachrichtenID2 {
     background-color: blanchedalmond;
@@ -71,9 +77,48 @@ img[alt=profil1], img[alt=profil2]{
     margin-left: 8%;
 }
 
+@media screen and (width: 768px) and (height:1024px){
+    #nav1, #nav2{
+        width: 300px;
+        margin-left: 30%;
+        border-width: 5px;
+        border-color: black;
+        border-style: solid;
+    
+    }
+}
 
-
-
+@media screen and (width: 320px) and (height:480px){
+    #nav1, #nav2{
+        width: 200px;
+        margin-left: 15%;
+        border-width: 5px;
+        border-color: black;
+        border-style: solid;
+    
+    }
+    #nav1 button, #nav2 button{
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        margin-left: 40px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+    }
+    img[alt=profil1], img[alt=profil2]{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        margin-left: 75px;
+        margin-top: 10px;
+    }
+    #raum1, #raum2{
+        width: 90%;
+        height: 500px;
+        background-color: rgb(49, 142, 165);
+        margin-left: 15px;
+    }
+}
 
  
 
