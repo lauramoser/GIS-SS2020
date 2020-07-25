@@ -43,6 +43,7 @@ export namespace Endabgabe {
 
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+            console.log("url " + url);
             let pathname: String | null = url.pathname;
             let inhalt: string = "";
 
@@ -64,13 +65,16 @@ export namespace Endabgabe {
                 let inhaltGeteilt1: string[] = inhalt.split("#");
                 //Den [0] in "inhaltVorname" speichern
                 let inhaltVorname: string = inhaltGeteilt1[0];
+                let inhaltNachname: string = inhaltGeteilt1[1];
                 let inhaltPasswort: string = inhaltGeteilt1[2];
                 //Da wo ":" den "inhaltVorname" nochmal spliten 
                 //Vname--> [0] / Laura-->[1]
                 let vornameZsm: string[] = inhaltVorname.split(":");
+                let nachnameZsm: string[] = inhaltNachname.split(":");
                 let passwortZsm: string[] = inhaltPasswort.split(":");
                 //Den [1] in "vornameZsm" speichern / muss "Laura sein"
                 let vorname: string = vornameZsm[1];
+                let nachname: string = nachnameZsm[1];
                 let passwort: string = passwortZsm[1];
                 
 
@@ -81,7 +85,7 @@ export namespace Endabgabe {
                 //let vornameInDbString: string = vornameInDb.toString();     
                 //console.log("Test: " + vornameInDbString);
 
-                if (allesInDbString.includes(vorname) && allesInDbString.includes(passwort)) {
+                if (allesInDbString.includes(vorname) && allesInDbString.includes(passwort) && allesInDbString.includes(nachname)) {
                     x = true;
                     let gefunden: string = x.toString();
                     _response.write(gefunden);
@@ -96,6 +100,7 @@ export namespace Endabgabe {
         }
         
             if (pathname == "/schicken") {
+
                 //nachricht speichern in collection "chat"
                 chat1.insertOne(url.query);
 

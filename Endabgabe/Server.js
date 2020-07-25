@@ -41,6 +41,7 @@ var Endabgabe;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
+            console.log("url " + url);
             let pathname = url.pathname;
             let inhalt = "";
             if (pathname == "/speichern") {
@@ -59,20 +60,23 @@ var Endabgabe;
                 let inhaltGeteilt1 = inhalt.split("#");
                 //Den [0] in "inhaltVorname" speichern
                 let inhaltVorname = inhaltGeteilt1[0];
+                let inhaltNachname = inhaltGeteilt1[1];
                 let inhaltPasswort = inhaltGeteilt1[2];
                 //Da wo ":" den "inhaltVorname" nochmal spliten 
                 //Vname--> [0] / Laura-->[1]
                 let vornameZsm = inhaltVorname.split(":");
+                let nachnameZsm = inhaltNachname.split(":");
                 let passwortZsm = inhaltPasswort.split(":");
                 //Den [1] in "vornameZsm" speichern / muss "Laura sein"
                 let vorname = vornameZsm[1];
+                let nachname = nachnameZsm[1];
                 let passwort = passwortZsm[1];
                 let allesInDb = await daten.find().toArray();
                 let allesInDbString = JSON.stringify(allesInDb);
                 //let vornameInDb: Mongo.Cursor = daten.find({Vname: []});
                 //let vornameInDbString: string = vornameInDb.toString();     
                 //console.log("Test: " + vornameInDbString);
-                if (allesInDbString.includes(vorname) && allesInDbString.includes(passwort)) {
+                if (allesInDbString.includes(vorname) && allesInDbString.includes(passwort) && allesInDbString.includes(nachname)) {
                     x = true;
                     let gefunden = x.toString();
                     _response.write(gefunden);

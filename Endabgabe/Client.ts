@@ -6,6 +6,7 @@ namespace Endabgabe {
     document.getElementById("r1")?.addEventListener("click", handlerLoeschen);
     document.getElementById("r2")?.addEventListener("click", handlerLoeschen);
    
+    let x: boolean = false;
     
     async function handleSpeichern(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
@@ -33,11 +34,15 @@ namespace Endabgabe {
         else if (antwort2 == "false") {
             alert("Du musst dich erst registrieren!");
         }
-
+        x = true;
     }
 
     async function handleSchicken(): Promise<void> {
-        
+        if (x == false) {
+            alert("Du musst dich erst einloggen um Nachrichten zu versenden!");
+            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+        }
+        else {
         let formData: FormData = new FormData(document.forms[0]);
         let url: string = "http://localhost:8100";
         //let url: string = "https://gissose2020laura.herokuapp.com";
@@ -51,8 +56,8 @@ namespace Endabgabe {
 
         //String splitten
         for (let index: number = 0; index < antwort2.length; index++) {
-            let inhaltGeteilt: string[] = antwort2[index].split(",");
-            let inhaltNachr: string = inhaltGeteilt[0];
+            let inhaltGeteilt: string[] = antwort2[index].split(":");
+            let inhaltNachr: string = inhaltGeteilt[2];
             console.log("inhaltNachr: " + inhaltNachr); //[ 
             let nachrZsm: string [] = inhaltNachr.split(":"); //!!!
             console.log("Felix: " + nachrZsm);
@@ -60,6 +65,8 @@ namespace Endabgabe {
             console.log("Laura: " + nachr);
             (<HTMLElement>document.getElementById("ausgabe")).innerHTML  = nachr;  
         }
+        }
+        
     }
 
     document.getElementById("raum1")?.setAttribute("style", "display : none");

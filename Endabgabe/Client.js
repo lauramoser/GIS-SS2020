@@ -6,6 +6,7 @@ var Endabgabe;
     document.getElementById("schicken")?.addEventListener("click", handleSchicken);
     document.getElementById("r1")?.addEventListener("click", handlerLoeschen);
     document.getElementById("r2")?.addEventListener("click", handlerLoeschen);
+    let x = false;
     async function handleSpeichern() {
         let formData = new FormData(document.forms[0]);
         let url = "http://localhost:8100";
@@ -28,26 +29,33 @@ var Endabgabe;
         else if (antwort2 == "false") {
             alert("Du musst dich erst registrieren!");
         }
+        x = true;
     }
     async function handleSchicken() {
-        let formData = new FormData(document.forms[0]);
-        let url = "http://localhost:8100";
-        //let url: string = "https://gissose2020laura.herokuapp.com";
-        let query = new URLSearchParams(formData);
-        url = url + "/schicken" + "?" + query.toString();
-        let antwort = await fetch(url, { method: "get" });
-        let antwort2 = await antwort.text();
-        console.log("Test: " + antwort2);
-        //String splitten
-        for (let index = 0; index < antwort2.length; index++) {
-            let inhaltGeteilt = antwort2[index].split(",");
-            let inhaltNachr = inhaltGeteilt[0];
-            console.log("inhaltNachr: " + inhaltNachr); //[ 
-            let nachrZsm = inhaltNachr.split(":"); //!!!
-            console.log("Felix: " + nachrZsm);
-            let nachr = nachrZsm[1];
-            console.log("Laura: " + nachr);
-            document.getElementById("ausgabe").innerHTML = nachr;
+        if (x == false) {
+            alert("Du musst dich erst einloggen um Nachrichten zu versenden!");
+            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+        }
+        else {
+            let formData = new FormData(document.forms[0]);
+            let url = "http://localhost:8100";
+            //let url: string = "https://gissose2020laura.herokuapp.com";
+            let query = new URLSearchParams(formData);
+            url = url + "/schicken" + "?" + query.toString();
+            let antwort = await fetch(url, { method: "get" });
+            let antwort2 = await antwort.text();
+            console.log("Test: " + antwort2);
+            //String splitten
+            for (let index = 0; index < antwort2.length; index++) {
+                let inhaltGeteilt = antwort2[index].split(":");
+                let inhaltNachr = inhaltGeteilt[2];
+                console.log("inhaltNachr: " + inhaltNachr); //[ 
+                let nachrZsm = inhaltNachr.split(":"); //!!!
+                console.log("Felix: " + nachrZsm);
+                let nachr = nachrZsm[1];
+                console.log("Laura: " + nachr);
+                document.getElementById("ausgabe").innerHTML = nachr;
+            }
         }
     }
     document.getElementById("raum1")?.setAttribute("style", "display : none");

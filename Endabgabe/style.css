@@ -24,6 +24,7 @@ img[alt=profil1], img[alt=profil2]{
     border-width: 5px;
     border-color: black;
     border-style: solid;
+
 }
 #nav1 button, #nav2 button{
     text-decoration: none;
