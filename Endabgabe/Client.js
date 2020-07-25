@@ -32,9 +32,10 @@ var Endabgabe;
         x = true;
     }
     async function handleSchicken() {
+        console.log("x= " + x);
         if (x == false) {
             alert("Du musst dich erst einloggen um Nachrichten zu versenden!");
-            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+            //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
         }
         else {
             let formData = new FormData(document.forms[0]);
