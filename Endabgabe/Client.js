@@ -58,7 +58,6 @@ var Endabgabe;
             url = url + "/schicken" + "?" + "username=" + localStorage.getItem("vorname") + "&" + query.toString();
             let antwort = await fetch(url, { method: "get" });
             let antwort2 = await antwort.text();
-            console.log("antwort2: " + antwort2);
             nachricht = JSON.parse(antwort2);
             //console.log("nachricht: " + nachricht[0]);
             //alle Nachrichten generieren und in ein div umwandeln um es als p auszugeben
@@ -84,10 +83,8 @@ var Endabgabe;
             let url = "https://gissose2020laura.herokuapp.com";
             let query = new URLSearchParams(formData);
             url = url + "/schicken2" + "?" + "username=" + localStorage.getItem("vorname") + "&" + query.toString();
-            console.log("url: " + url);
             let antwort = await fetch(url, { method: "get" });
             let antwort2 = await antwort.text();
-            console.log("antwort2: " + antwort2);
             nachricht = JSON.parse(antwort2);
             //console.log("nachricht: " + nachricht[0]);
             for (let i = 0; i < nachricht.length; i++) {

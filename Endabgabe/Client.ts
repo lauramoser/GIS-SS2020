@@ -71,7 +71,6 @@ namespace Endabgabe {
 
         let antwort: Response = await fetch(url, { method: "get" });
         let antwort2: string = await antwort.text();
-        console.log("antwort2: " + antwort2);
         nachricht = <Chat[]>JSON.parse(antwort2);
         //console.log("nachricht: " + nachricht[0]);
         
@@ -101,10 +100,8 @@ namespace Endabgabe {
         let query: URLSearchParams = new URLSearchParams(<any> formData);
 
         url = url + "/schicken2" + "?" + "username=" + localStorage.getItem("vorname") + "&" + query.toString();
-        console.log("url: " + url);
         let antwort: Response = await fetch(url, { method: "get" });
         let antwort2: string = await antwort.text();
-        console.log("antwort2: " + antwort2);
         nachricht = <Chat[]>JSON.parse(antwort2);
         //console.log("nachricht: " + nachricht[0]);
         
