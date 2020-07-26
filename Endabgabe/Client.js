@@ -3,7 +3,6 @@ var Endabgabe;
 (function (Endabgabe) {
     let nachricht;
     //= [{id: "leer", username: "leer", textnachricht: "leer"}];
-    localStorage.setItem("x", "false");
     document.getElementById("registrieren")?.addEventListener("click", handleSpeichern);
     document.getElementById("einloggenButton")?.addEventListener("click", handlePrüfen);
     document.getElementById("schicken")?.addEventListener("click", handleSchicken);
@@ -26,6 +25,7 @@ var Endabgabe;
     let vNameString;
     //Prüfen ob Daten beim Login in Datenbank enthalten sind
     async function handlePrüfen() {
+        localStorage.setItem("x", "false");
         let formData = new FormData(document.forms[0]);
         //let url: string = "http://localhost:8100";
         let url = "https://gissose2020laura.herokuapp.com";
