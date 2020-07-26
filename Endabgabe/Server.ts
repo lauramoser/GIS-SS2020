@@ -50,8 +50,6 @@ export namespace Endabgabe {
             let inhalt: string = "";
 
             if (pathname == "/speichern") {
-                //Befehl "insert" fügt die Daten in die Datenbank
-                //url.query ist das was eingegeben wurde  
                 daten.insertOne(url.query);
             }
 
@@ -80,29 +78,23 @@ export namespace Endabgabe {
                 console.log("nachname: " + nachname);
                 let passwort: string = passwortZsm[1];
                 
-
+                //alles speichern und in string umwandeln
                 let allesInDb: string[] = await daten.find().toArray();
                 let allesInDbString: string = JSON.stringify(allesInDb);
 
-                //let vornameInDb: Mongo.Cursor = daten.find({Vname: []});
-                //let vornameInDbString: string = vornameInDb.toString();     
-                //console.log("Test: " + vornameInDbString);
-
+                //ist alles in der Datenbank enthalten? Kombi wird nicht abgefragt
                 if (allesInDbString.includes(vorname)) {
                     if (allesInDbString.includes(passwort)) {
                         if (allesInDbString.includes(nachname)) {
                             x = true;
                             let gefunden: string = x.toString();
                             _response.write(gefunden);
-                            console.log("True/False: " + gefunden);
                         }
                     }
                 }
                 else {
                     let nichtVorhanden: string = x.toString();
                     _response.write(nichtVorhanden);
-                    console.log("False/True: " + nichtVorhanden);
-                    //stopp/ return 
                 }              
             }
             
@@ -118,6 +110,14 @@ export namespace Endabgabe {
                 //Datenbankinhalt an Client schicken                
                 _response.write(JSON.stringify(array));               
             }
+
+            if (pathname == "/schicken2") {
+                chat2.insertOne(url.query);
+                let cursor: Mongo.Cursor = chat2.find();
+                let array: any[] = await cursor.toArray();
+                console.log(array);              
+                _response.write(JSON.stringify(array));               
+            }            
         }
         //Abschicken an Client
         _response.end();

@@ -47,8 +47,6 @@ var Endabgabe;
             let pathname = url.pathname;
             let inhalt = "";
             if (pathname == "/speichern") {
-                //Befehl "insert" fügt die Daten in die Datenbank
-                //url.query ist das was eingegeben wurde  
                 daten.insertOne(url.query);
             }
             if (pathname == "/login") {
@@ -74,26 +72,22 @@ var Endabgabe;
                 let nachname = nachnameZsm[1];
                 console.log("nachname: " + nachname);
                 let passwort = passwortZsm[1];
+                //alles speichern und in string umwandeln
                 let allesInDb = await daten.find().toArray();
                 let allesInDbString = JSON.stringify(allesInDb);
-                //let vornameInDb: Mongo.Cursor = daten.find({Vname: []});
-                //let vornameInDbString: string = vornameInDb.toString();     
-                //console.log("Test: " + vornameInDbString);
+                //ist alles in der Datenbank enthalten? Kombi wird nicht abgefragt
                 if (allesInDbString.includes(vorname)) {
                     if (allesInDbString.includes(passwort)) {
                         if (allesInDbString.includes(nachname)) {
                             x = true;
                             let gefunden = x.toString();
                             _response.write(gefunden);
-                            console.log("True/False: " + gefunden);
                         }
                     }
                 }
                 else {
                     let nichtVorhanden = x.toString();
                     _response.write(nichtVorhanden);
-                    console.log("False/True: " + nichtVorhanden);
-                    //stopp/ return 
                 }
             }
             if (pathname == "/schicken") {
@@ -104,6 +98,13 @@ var Endabgabe;
                 let array = await cursor.toArray();
                 console.log(array);
                 //Datenbankinhalt an Client schicken                
+                _response.write(JSON.stringify(array));
+            }
+            if (pathname == "/schicken2") {
+                chat2.insertOne(url.query);
+                let cursor = chat2.find();
+                let array = await cursor.toArray();
+                console.log(array);
                 _response.write(JSON.stringify(array));
             }
         }
