@@ -119,8 +119,8 @@ namespace Endabgabe {
         }
         else { 
             alert("Du musst dich erst einloggen um Nachrichten zu versenden!");
-            window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
-            //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+            //window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
         }
     }
 
