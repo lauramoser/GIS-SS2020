@@ -55,7 +55,6 @@ export namespace Endabgabe {
 
             if (pathname == "/login") {
                 let x: boolean = false;
-                console.log("x:" + x);
 
                 for (let key in url.query) {
                     //inhalt der gegeben wurde mit ":" "/" trennen                                          

@@ -51,7 +51,6 @@ var Endabgabe;
             }
             if (pathname == "/login") {
                 let x = false;
-                console.log("x:" + x);
                 for (let key in url.query) {
                     //inhalt der gegeben wurde mit ":" "/" trennen                                          
                     inhalt += (key + ":" + url.query[key] + "#");

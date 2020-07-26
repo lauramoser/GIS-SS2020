@@ -34,7 +34,8 @@ namespace Endabgabe {
     //Prüfen ob Daten beim Login in Datenbank enthalten sind
     async function handlePrüfen(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
-        let url: string = "http://localhost:8100";
+        //let url: string = "http://localhost:8100";
+        let url: string = "https://gissose2020laura.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
         url = url + "/login" + "?" + query.toString();    
         vNameString = (<HTMLInputElement>document.getElementById("vnameID")).value;
@@ -94,8 +95,8 @@ namespace Endabgabe {
     async function handleSchicken2(): Promise<void> {
         if (localStorage.getItem("x") == "true") {
         let formData: FormData = new FormData(document.forms[1]);
-        let url: string = "http://localhost:8100";
-        //let url: string = "https://gissose2020laura.herokuapp.com";
+        //let url: string = "http://localhost:8100";
+        let url: string = "https://gissose2020laura.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
 
         url = url + "/schicken2" + "?" + "username=" + localStorage.getItem("vorname") + "&" + query.toString();
@@ -143,8 +144,8 @@ namespace Endabgabe {
     //beim abmelden localStorge löschen um x zurückzusetzen
     function handleAbmelden(_event: Event): void {
         localStorage.clear();
-        window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
-        //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+        //window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+        window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
     }
 }
 //"http://localhost:8100"
