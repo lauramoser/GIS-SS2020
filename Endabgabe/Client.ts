@@ -33,7 +33,6 @@ namespace Endabgabe {
 
     //Prüfen ob Daten beim Login in Datenbank enthalten sind
     async function handlePrüfen(): Promise<void> {
-        localStorage.setItem("x", "false");
         let formData: FormData = new FormData(document.forms[0]);
         //let url: string = "http://localhost:8100";
         let url: string = "https://gissose2020laura.herokuapp.com";
@@ -53,6 +52,7 @@ namespace Endabgabe {
             //window.location.href = "http://127.0.0.1:5500/Endabgabe/Chatrooms.html";
         }
         else if (antwort2 == "false") {
+            localStorage.setItem("x", "false");
             alert("Du musst dich erst registrieren!");
         }
         

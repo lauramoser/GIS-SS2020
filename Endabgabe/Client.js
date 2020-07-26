@@ -25,7 +25,6 @@ var Endabgabe;
     let vNameString;
     //Prüfen ob Daten beim Login in Datenbank enthalten sind
     async function handlePrüfen() {
-        localStorage.setItem("x", "false");
         let formData = new FormData(document.forms[0]);
         //let url: string = "http://localhost:8100";
         let url = "https://gissose2020laura.herokuapp.com";
@@ -44,6 +43,7 @@ var Endabgabe;
             //window.location.href = "http://127.0.0.1:5500/Endabgabe/Chatrooms.html";
         }
         else if (antwort2 == "false") {
+            localStorage.setItem("x", "false");
             alert("Du musst dich erst registrieren!");
         }
     }
