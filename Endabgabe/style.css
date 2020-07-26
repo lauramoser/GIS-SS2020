@@ -23,11 +23,7 @@ li{
 }
 #nav1, #nav2{
     width: 300px;
-<<<<<<< HEAD
-    margin-left: 33%;
-=======
-    margin-left: 38%;
->>>>>>> master
+    margin-left: 35%;
     border-width: 5px;
     border-color: black;
     border-style: solid;
@@ -79,6 +75,7 @@ li{
     width: 85%;
     height: 70%;
     margin-left: 8%;
+    overflow-y: auto;
 }
 
 @media screen and (width: 768px) and (height:1024px){
