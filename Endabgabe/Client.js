@@ -3,6 +3,7 @@ var Endabgabe;
 (function (Endabgabe) {
     let nachricht;
     //= [{id: "leer", username: "leer", textnachricht: "leer"}];
+    localStorage.setItem("x", "false");
     document.getElementById("registrieren")?.addEventListener("click", handleSpeichern);
     document.getElementById("einloggenButton")?.addEventListener("click", handlePrüfen);
     document.getElementById("schicken")?.addEventListener("click", handleSchicken);
