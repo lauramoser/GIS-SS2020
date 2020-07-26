@@ -1,12 +1,14 @@
 "use strict";
 var Endabgabe;
 (function (Endabgabe) {
+    let nachricht;
     document.getElementById("registrieren")?.addEventListener("click", handleSpeichern);
     document.getElementById("einloggenButton")?.addEventListener("click", handlePrüfen);
     document.getElementById("schicken")?.addEventListener("click", handleSchicken);
+    document.getElementById("schicken2")?.addEventListener("click", handleSchicken);
+    document.getElementById("abmelden")?.addEventListener("click", handleAbmelden);
     document.getElementById("r1")?.addEventListener("click", handlerLoeschen);
     document.getElementById("r2")?.addEventListener("click", handlerLoeschen);
-    let x = false;
     async function handleSpeichern() {
         let formData = new FormData(document.forms[0]);
         let url = "http://localhost:8100";
@@ -14,6 +16,8 @@ var Endabgabe;
         let query = new URLSearchParams(formData);
         url = url + "/speichern" + "?" + query.toString();
         await fetch(url);
+        window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+        //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
     }
     async function handlePrüfen() {
         let formData = new FormData(document.forms[0]);
@@ -24,20 +28,17 @@ var Endabgabe;
         let antwort2 = await antwort.text();
         console.log(antwort2);
         if (antwort2 == "true") {
-            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Chatrooms.html";
+            localStorage.setItem("x", "true");
+            console.log("x= " + localStorage.getItem("x"));
+            //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Chatrooms.html";
+            window.location.href = "http://127.0.0.1:5500/Endabgabe/Chatrooms.html";
         }
         else if (antwort2 == "false") {
             alert("Du musst dich erst registrieren!");
         }
-        x = true;
     }
     async function handleSchicken() {
-        console.log("x= " + x);
-        if (x == false) {
-            alert("Du musst dich erst einloggen um Nachrichten zu versenden!");
-            //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
-        }
-        else {
+        if (localStorage.getItem("x") == "true") {
             let formData = new FormData(document.forms[0]);
             let url = "http://localhost:8100";
             //let url: string = "https://gissose2020laura.herokuapp.com";
@@ -45,18 +46,22 @@ var Endabgabe;
             url = url + "/schicken" + "?" + query.toString();
             let antwort = await fetch(url, { method: "get" });
             let antwort2 = await antwort.text();
-            console.log("Test: " + antwort2);
-            //String splitten
-            for (let index = 0; index < antwort2.length; index++) {
-                let inhaltGeteilt = antwort2[index].split(":");
-                let inhaltNachr = inhaltGeteilt[2];
-                console.log("inhaltNachr: " + inhaltNachr); //[ 
-                let nachrZsm = inhaltNachr.split(":"); //!!!
-                console.log("Felix: " + nachrZsm);
-                let nachr = nachrZsm[1];
-                console.log("Laura: " + nachr);
-                document.getElementById("ausgabe").innerHTML = nachr;
+            nachricht = JSON.parse(JSON.stringify(antwort2));
+            console.log("nachricht: " + nachricht);
+            //!!!!!
+            for (let i = 0; i < nachricht.length; i++) {
+                let chatnach = document.createElement("div");
+                document.getElementById("nachrichtenID")?.appendChild(chatnach);
+                let text = document.createElement("p");
+                text.innerHTML = nachricht[i].textnachricht;
+                chatnach.appendChild(text);
             }
+            //!!!!!
+        }
+        else {
+            alert("Du musst dich erst einloggen um Nachrichten zu versenden!");
+            window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+            //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
         }
     }
     document.getElementById("raum1")?.setAttribute("style", "display : none");
@@ -72,6 +77,11 @@ var Endabgabe;
             document.getElementById("raum1")?.setAttribute("style", "display : none");
             document.getElementById("raum2")?.setAttribute("style", "display : block");
         }
+    }
+    function handleAbmelden(_event) {
+        localStorage.clear();
+        window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+        //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
     }
 })(Endabgabe || (Endabgabe = {}));
 //"http://localhost:8100"
