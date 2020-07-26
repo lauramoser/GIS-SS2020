@@ -2,9 +2,11 @@ namespace Endabgabe {
 
     interface Chat {
     id: string;
+    username: string;
     textnachricht: string;
     }
     let nachricht: Chat[];
+    //= [{id: "leer", username: "leer", textnachricht: "leer"}];
 
     document.getElementById("registrieren")?.addEventListener("click", handleSpeichern);
     document.getElementById("einloggenButton")?.addEventListener("click", handlePrüfen );
@@ -25,13 +27,15 @@ namespace Endabgabe {
         window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
         //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
     }
+    let vNameString: string;
 
     async function handlePrüfen(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
         let url: string = "http://localhost:8100";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
-        url = url + "/login" + "?" + query.toString();
-        
+        url = url + "/login" + "?" + query.toString();    
+        vNameString = (<HTMLInputElement>document.getElementById("vnameID")).value;
+        localStorage.setItem("vorname", vNameString);
         let antwort: Response = await fetch(url, { method: "get" });
         let antwort2: string = await antwort.text(); 
         console.log(antwort2);
@@ -42,7 +46,6 @@ namespace Endabgabe {
             console.log("x= " + localStorage.getItem("x"));
             //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Chatrooms.html";
             window.location.href = "http://127.0.0.1:5500/Endabgabe/Chatrooms.html";
-
         }
         else if (antwort2 == "false") {
             alert("Du musst dich erst registrieren!");
@@ -56,20 +59,25 @@ namespace Endabgabe {
         let url: string = "http://localhost:8100";
         //let url: string = "https://gissose2020laura.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
-        url = url + "/schicken" + "?" + query.toString();
-        
+
+        url = url + "/schicken" + "?" + "username=" + localStorage.getItem("vorname") + "&" + query.toString();
+        console.log(url);
+
         let antwort: Response = await fetch(url, { method: "get" });
         let antwort2: string = await antwort.text();
+        console.log("antwort2: " + antwort2);
         nachricht = JSON.parse(JSON.stringify(antwort2));
         console.log("nachricht: " + nachricht);
-
+        
         //!!!!!
         for (let i: number = 0; i < nachricht.length; i++) {
+        let ausgabe: string = nachricht[i].username + ": " + nachricht[i].textnachricht;
         let chatnach: HTMLDivElement = document.createElement("div");
         document.getElementById("nachrichtenID")?.appendChild(chatnach);
     
         let text: HTMLParagraphElement = document.createElement("p");
-        text.innerHTML = nachricht[i].textnachricht;
+        //text.innerHTML = nachricht[i].textnachricht;
+        text.innerHTML = ausgabe;
         chatnach.appendChild(text);
         }
         //!!!!!

@@ -41,7 +41,9 @@ var Endabgabe;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            console.log("url " + url);
+            //console.log("url " + JSON.stringify(url.query));
+            //let urlquery: string = JSON.stringify(url.query);
+            //console.log("urlquery: " + urlquery);
             let pathname = url.pathname;
             let inhalt = "";
             if (pathname == "/speichern") {
@@ -67,20 +69,25 @@ var Endabgabe;
                 let vornameZsm = inhaltVorname.split(":");
                 let nachnameZsm = inhaltNachname.split(":");
                 let passwortZsm = inhaltPasswort.split(":");
-                //Den [1] in "vornameZsm" speichern / muss "Laura sein"
+                //Den [1] in "vornameZsm" speichern / muss "Laura" sein
                 let vorname = vornameZsm[1];
                 let nachname = nachnameZsm[1];
+                console.log("nachname: " + nachname);
                 let passwort = passwortZsm[1];
                 let allesInDb = await daten.find().toArray();
                 let allesInDbString = JSON.stringify(allesInDb);
                 //let vornameInDb: Mongo.Cursor = daten.find({Vname: []});
                 //let vornameInDbString: string = vornameInDb.toString();     
                 //console.log("Test: " + vornameInDbString);
-                if (allesInDbString.includes(vorname) && allesInDbString.includes(passwort) && allesInDbString.includes(nachname)) {
-                    x = true;
-                    let gefunden = x.toString();
-                    _response.write(gefunden);
-                    console.log("True/False: " + gefunden);
+                if (allesInDbString.includes(vorname)) {
+                    if (allesInDbString.includes(passwort)) {
+                        if (allesInDbString.includes(nachname)) {
+                            x = true;
+                            let gefunden = x.toString();
+                            _response.write(gefunden);
+                            console.log("True/False: " + gefunden);
+                        }
+                    }
                 }
                 else {
                     let nichtVorhanden = x.toString();
@@ -90,16 +97,14 @@ var Endabgabe;
                 }
             }
             if (pathname == "/schicken") {
-                //nachricht speichern in collection "chat"
+                //nachricht speichern in collection "chat1"
                 chat1.insertOne(url.query);
                 //alles aus Datenbank holen
                 let cursor = chat1.find();
                 let array = await cursor.toArray();
+                console.log(array);
                 //Datenbankinhalt an Client schicken                
                 _response.write(JSON.stringify(array));
-                /*let textElement: HTMLParagraphElement = document.createElement("input");
-                textElement.innerHTML = <string> localStorage.getItem(");
-                document.getElementById("tsr" + i)?.appendChild(textElement);*/
             }
         }
         //Abschicken an Client
@@ -116,5 +121,20 @@ let inhaltGeteilt1: string[] = inhalt.split("#");
 for (let i: number = 0, i < inhaltGeteilt1.length -1, i++) {
     let inhaltAlles: string[] = inhaltGeteilt1[i];
 
-}*/ 
+}*/
+/*if (allesInDbString.includes(vorname) && allesInDbString.includes(passwort) && allesInDbString.includes(nachname)) {
+    x = true;
+    let gefunden: string = x.toString();
+    _response.write(gefunden);
+    console.log("True/False: " + gefunden);
+}
+else {
+    let nichtVorhanden: string = x.toString();
+    _response.write(nichtVorhanden);
+    console.log("False/True: " + nichtVorhanden);
+    //stopp/ return
+}*/
+/*let textElement: HTMLParagraphElement = document.createElement("input");
+                textElement.innerHTML = <string> localStorage.getItem(");
+                document.getElementById("tsr" + i)?.appendChild(textElement);*/ 
 //# sourceMappingURL=Server.js.map
