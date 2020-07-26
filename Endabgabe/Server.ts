@@ -105,17 +105,16 @@ export namespace Endabgabe {
                 //alles aus Datenbank holen
                 let cursor: Mongo.Cursor = chat1.find();
                 let array: any[] = await cursor.toArray();
-                console.log(array);
 
                 //Datenbankinhalt an Client schicken                
                 _response.write(JSON.stringify(array));               
             }
 
+            //Verbesserun möglich mit chat raum in url speichern um hier eine if Abfrage zu machen
             if (pathname == "/schicken2") {
                 chat2.insertOne(url.query);
                 let cursor: Mongo.Cursor = chat2.find();
-                let array: any[] = await cursor.toArray();
-                console.log(array);              
+                let array: any[] = await cursor.toArray();             
                 _response.write(JSON.stringify(array));               
             }            
         }

@@ -96,15 +96,14 @@ var Endabgabe;
                 //alles aus Datenbank holen
                 let cursor = chat1.find();
                 let array = await cursor.toArray();
-                console.log(array);
                 //Datenbankinhalt an Client schicken                
                 _response.write(JSON.stringify(array));
             }
+            //Verbesserun möglich mit chat raum in url speichern um hier eine if Abfrage zu machen
             if (pathname == "/schicken2") {
                 chat2.insertOne(url.query);
                 let cursor = chat2.find();
                 let array = await cursor.toArray();
-                console.log(array);
                 _response.write(JSON.stringify(array));
             }
         }
