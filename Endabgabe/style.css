@@ -23,7 +23,11 @@ li{
 }
 #nav1, #nav2{
     width: 300px;
+<<<<<<< HEAD
     margin-left: 33%;
+=======
+    margin-left: 38%;
+>>>>>>> master
     border-width: 5px;
     border-color: black;
     border-style: solid;

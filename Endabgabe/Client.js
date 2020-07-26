@@ -54,7 +54,6 @@ var Endabgabe;
             console.log("antwort2: " + antwort2);
             nachricht = JSON.parse(JSON.stringify(antwort2));
             console.log("nachricht: " + nachricht);
-            //!!!!!
             for (let i = 0; i < nachricht.length; i++) {
                 let ausgabe = nachricht[i].username + ": " + nachricht[i].textnachricht;
                 let chatnach = document.createElement("div");

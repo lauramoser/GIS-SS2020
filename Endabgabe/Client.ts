@@ -46,6 +46,10 @@ namespace Endabgabe {
             console.log("x= " + localStorage.getItem("x"));
             //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Chatrooms.html";
             window.location.href = "http://127.0.0.1:5500/Endabgabe/Chatrooms.html";
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
         }
         else if (antwort2 == "false") {
             alert("Du musst dich erst registrieren!");
@@ -54,6 +58,10 @@ namespace Endabgabe {
     }
 
     async function handleSchicken(): Promise<void> {
+<<<<<<< HEAD
+=======
+        console.log(localStorage.getItem("x"));
+>>>>>>> master
         if (localStorage.getItem("x") == "true") {
         let formData: FormData = new FormData(document.forms[0]);
         let url: string = "http://localhost:8100";
@@ -69,6 +77,7 @@ namespace Endabgabe {
         nachricht = JSON.parse(JSON.stringify(antwort2));
         console.log("nachricht: " + nachricht);
         
+<<<<<<< HEAD
         //!!!!!
         for (let i: number = 0; i < nachricht.length; i++) {
         let ausgabe: string = nachricht[i].username + ": " + nachricht[i].textnachricht;
@@ -82,6 +91,23 @@ namespace Endabgabe {
         }
         //!!!!!
         }
+=======
+        console.log("Test: " + antwort2);
+        (<HTMLElement>document.getElementById("ausgabe")).innerHTML  = antwort2;
+        //String splitten
+        /*for (let i: number = 0; i < antwort2.length; i++) {
+            let inhaltGeteilt: string[] = antwort2[i].split(":");
+            
+            let inhaltNachr: string = inhaltGeteilt[2];
+            console.log("inhaltNachr: " + inhaltNachr); //[ 
+            let nachrZsm: string [] = inhaltNachr.split(":"); //!!!
+            console.log("Felix: " + nachrZsm);
+            let nachr: string = nachrZsm[1];
+            console.log("Laura: " + nachr);
+            (<HTMLElement>document.getElementById("ausgabe")).innerHTML  = nachr; 
+        }*/
+        }
+>>>>>>> master
         else { 
             alert("Du musst dich erst einloggen um Nachrichten zu versenden!");
             window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
