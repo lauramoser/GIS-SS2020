@@ -69,7 +69,6 @@ var Endabgabe;
                 //Den [1] in "vornameZsm" speichern / muss "Laura" sein
                 let vorname = vornameZsm[1];
                 let nachname = nachnameZsm[1];
-                console.log("nachname: " + nachname);
                 let passwort = passwortZsm[1];
                 //alles speichern und in string umwandeln
                 let allesInDb = await daten.find().toArray();

@@ -13,21 +13,21 @@ var Endabgabe;
     //Daten werden beim registrieren gespeichert
     async function handleSpeichern() {
         let formData = new FormData(document.forms[0]);
-        //let url: string = "http://localhost:8100";
-        let url = "https://gissose2020laura.herokuapp.com";
+        let url = "http://localhost:8100";
+        //let url: string = "https://gissose2020laura.herokuapp.com";
         let query = new URLSearchParams(formData);
         url = url + "/speichern" + "?" + query.toString();
         await fetch(url);
-        //window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
-        window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+        window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+        //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
     }
     //Variabel Deklaration um den Username zu verwenden
     let vNameString;
     //Prüfen ob Daten beim Login in Datenbank enthalten sind
     async function handlePrüfen() {
         let formData = new FormData(document.forms[0]);
-        //let url: string = "http://localhost:8100";
-        let url = "https://gissose2020laura.herokuapp.com";
+        let url = "http://localhost:8100";
+        //let url: string = "https://gissose2020laura.herokuapp.com";
         let query = new URLSearchParams(formData);
         url = url + "/login" + "?" + query.toString();
         vNameString = document.getElementById("vnameID").value;
@@ -39,8 +39,8 @@ var Endabgabe;
         //Wenn enthalten dann true und in localStorage speichern um später abzufragen ob man sich eingeloggt hat
         if (antwort2 == "true") {
             localStorage.setItem("x", "true");
-            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Chatrooms.html";
-            //window.location.href = "http://127.0.0.1:5500/Endabgabe/Chatrooms.html";
+            //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Chatrooms.html";
+            window.location.href = "http://127.0.0.1:5500/Endabgabe/Chatrooms.html";
         }
         else if (antwort2 == "false") {
             localStorage.setItem("x", "false");
@@ -51,8 +51,8 @@ var Endabgabe;
         //if Abfrage ob x im localStorage den String "true" hat --> Frage ob man sich eingeloggt hat
         if (localStorage.getItem("x") == "true") {
             let formData = new FormData(document.forms[0]);
-            //let url: string = "http://localhost:8100";
-            let url = "https://gissose2020laura.herokuapp.com";
+            let url = "http://localhost:8100";
+            //let url: string = "https://gissose2020laura.herokuapp.com";
             let query = new URLSearchParams(formData);
             //vorname an url gehängt und es in die Datenbank speichern zu können
             url = url + "/schicken" + "?" + "username=" + localStorage.getItem("vorname") + "&" + query.toString();
@@ -72,15 +72,15 @@ var Endabgabe;
         }
         else {
             alert("Du musst dich erst einloggen um Nachrichten zu versenden!");
-            //window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
-            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+            window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+            //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
         }
     }
     async function handleSchicken2() {
         if (localStorage.getItem("x") == "true") {
             let formData = new FormData(document.forms[1]);
-            //let url: string = "http://localhost:8100";
-            let url = "https://gissose2020laura.herokuapp.com";
+            let url = "http://localhost:8100";
+            //let url: string = "https://gissose2020laura.herokuapp.com";
             let query = new URLSearchParams(formData);
             url = url + "/schicken2" + "?" + "username=" + localStorage.getItem("vorname") + "&" + query.toString();
             let antwort = await fetch(url, { method: "get" });
@@ -98,8 +98,8 @@ var Endabgabe;
         }
         else {
             alert("Du musst dich erst einloggen um Nachrichten zu versenden!");
-            //window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
-            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+            window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+            //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
         }
     }
     //Chats löschen um auswählen zu können
@@ -120,8 +120,8 @@ var Endabgabe;
     //beim abmelden localStorge löschen um x zurückzusetzen
     function handleAbmelden(_event) {
         localStorage.clear();
-        //window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
-        window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+        window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+        //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
     }
 })(Endabgabe || (Endabgabe = {}));
 //"http://localhost:8100"

@@ -1,0 +1,47 @@
+
+
+nav{
+    background-color: rgb(143, 24, 24);
+    height: 80px;
+    width: 100%
+}
+
+label.name{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 50px;
+    font-weight: bold;
+}
+label.name{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 50px;
+    font-weight: bold;
+}
+nav ul{
+    float: right;
+    margin: auto;
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 80px ;
+    margin: 0 30px;
+}
+
+nav ul li a{
+    color: black;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    
+}
+
+a.active,a:hover{
+    background-color: white;
+    transition: .5s;
+}

@@ -1,7 +1,7 @@
 namespace Endabgabe {
 
     //interface für die anzeige der Nachrichten
-    interface Chat {
+    interface Chat {        //Interface speichert meine values für den bestimmten key
     id: string;
     username: string;
     textnachricht: string;
@@ -20,22 +20,22 @@ namespace Endabgabe {
     //Daten werden beim registrieren gespeichert
     async function handleSpeichern(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
-        //let url: string = "http://localhost:8100";
-        let url: string = "https://gissose2020laura.herokuapp.com";
+        let url: string = "http://localhost:8100";
+        //let url: string = "https://gissose2020laura.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
         url = url + "/speichern" + "?" + query.toString();
         await fetch(url);
-        //window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
-        window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+        window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+        //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
     }
     //Variabel Deklaration um den Username zu verwenden
-    let vNameString: string;
+    let vNameString: string; //--> Variabel nur deklariert und gesagt, dass es ein String ist. 
 
     //Prüfen ob Daten beim Login in Datenbank enthalten sind
     async function handlePrüfen(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
-        //let url: string = "http://localhost:8100";
-        let url: string = "https://gissose2020laura.herokuapp.com";
+        let url: string = "http://localhost:8100";
+        //let url: string = "https://gissose2020laura.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
         url = url + "/login" + "?" + query.toString();    
         vNameString = (<HTMLInputElement>document.getElementById("vnameID")).value;
@@ -48,8 +48,8 @@ namespace Endabgabe {
         //Wenn enthalten dann true und in localStorage speichern um später abzufragen ob man sich eingeloggt hat
         if (antwort2 == "true") {
             localStorage.setItem("x", "true");
-            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Chatrooms.html";
-            //window.location.href = "http://127.0.0.1:5500/Endabgabe/Chatrooms.html";
+            //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Chatrooms.html";
+            window.location.href = "http://127.0.0.1:5500/Endabgabe/Chatrooms.html";
         }
         else if (antwort2 == "false") {
             localStorage.setItem("x", "false");
@@ -62,8 +62,8 @@ namespace Endabgabe {
         //if Abfrage ob x im localStorage den String "true" hat --> Frage ob man sich eingeloggt hat
         if (localStorage.getItem("x") == "true") {
         let formData: FormData = new FormData(document.forms[0]);
-        //let url: string = "http://localhost:8100";
-        let url: string = "https://gissose2020laura.herokuapp.com";
+        let url: string = "http://localhost:8100";
+        //let url: string = "https://gissose2020laura.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
 
         //vorname an url gehängt und es in die Datenbank speichern zu können
@@ -71,32 +71,33 @@ namespace Endabgabe {
 
         let antwort: Response = await fetch(url, { method: "get" });
         let antwort2: string = await antwort.text();
-        nachricht = <Chat[]>JSON.parse(antwort2);
+        nachricht = <Chat[]>JSON.parse(antwort2);   // --> Antwort in den Array gespeichert vom Interface gespeichert
+                                                    // --> speichert mir die values für den entsprechenden key damit ich besser drauf zugreifen kann
         //console.log("nachricht: " + nachricht[0]);
         
         //alle Nachrichten generieren und in ein div umwandeln um es als p auszugeben
         for (let i: number = 0; i < nachricht.length; i++) {
-        let ausgabe: string = nachricht[i].username + ": " + nachricht[i].textnachricht;
-        let chatnach: HTMLDivElement = document.createElement("div");
-        document.getElementById("nachrichtenID")?.appendChild(chatnach);
-    
-        let text: HTMLParagraphElement = document.createElement("p");
-        text.innerHTML = ausgabe;
-        chatnach.appendChild(text);
+        let ausgabe: string = nachricht[i].username + ": " + nachricht[i].textnachricht;    //username und nachricht im Array 
+        let chatnach: HTMLDivElement = document.createElement("div");                       //ein div erstellt
+        document.getElementById("nachrichtenID")?.appendChild(chatnach);                    //div in das Ausgabenfeld gesetzt
+                                                                                            //besser damit arbeiten zu können
+        let text: HTMLParagraphElement = document.createElement("p");                       //p erstellt
+        text.innerHTML = ausgabe;                                                           //aus der Augabe hab ich dann ein p (Text) draus gemacht
+        chatnach.appendChild(text);                                                         //dieser Text ist dann ein Kind vom div
         }
         }
         else { 
             alert("Du musst dich erst einloggen um Nachrichten zu versenden!");
-            //window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
-            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+            window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+            //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
         }
     }
 
     async function handleSchicken2(): Promise<void> {
         if (localStorage.getItem("x") == "true") {
         let formData: FormData = new FormData(document.forms[1]);
-        //let url: string = "http://localhost:8100";
-        let url: string = "https://gissose2020laura.herokuapp.com";
+        let url: string = "http://localhost:8100";
+        //let url: string = "https://gissose2020laura.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any> formData);
 
         url = url + "/schicken2" + "?" + "username=" + localStorage.getItem("vorname") + "&" + query.toString();
@@ -117,8 +118,8 @@ namespace Endabgabe {
         }
         else { 
             alert("Du musst dich erst einloggen um Nachrichten zu versenden!");
-            //window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
-            window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+            window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+            //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
         }
     }
 
@@ -142,8 +143,8 @@ namespace Endabgabe {
     //beim abmelden localStorge löschen um x zurückzusetzen
     function handleAbmelden(_event: Event): void {
         localStorage.clear();
-        //window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
-        window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
+        window.location.href = "http://127.0.0.1:5500/Endabgabe/Login.html";
+        //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
     }
 }
 //"http://localhost:8100"

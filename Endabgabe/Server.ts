@@ -74,12 +74,11 @@ export namespace Endabgabe {
                 //Den [1] in "vornameZsm" speichern / muss "Laura" sein
                 let vorname: string = vornameZsm[1];
                 let nachname: string = nachnameZsm[1];
-                console.log("nachname: " + nachname);
                 let passwort: string = passwortZsm[1];
                 
                 //alles speichern und in string umwandeln
-                let allesInDb: string[] = await daten.find().toArray();
-                let allesInDbString: string = JSON.stringify(allesInDb);
+                let allesInDb: string[] = await daten.find().toArray();     // alles aus der Datenbank ausgeben und in Array speichern
+                let allesInDbString: string = JSON.stringify(allesInDb);    // in JSON umwandeln damit es vergleichen kann
 
                 //ist alles in der Datenbank enthalten? Kombi wird nicht abgefragt
                 if (allesInDbString.includes(vorname)) {
@@ -109,7 +108,7 @@ export namespace Endabgabe {
                 _response.write(JSON.stringify(array));               
             }
 
-            //Verbesserun möglich mit chat raum in url speichern um hier eine if Abfrage zu machen
+            //Verbesserung möglich mit chat raum in url speichern um hier eine if Abfrage zu machen
             if (pathname == "/schicken2") {
                 chat2.insertOne(url.query);
                 let cursor: Mongo.Cursor = chat2.find();
