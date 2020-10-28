@@ -7,6 +7,8 @@
     <script src="Client.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src=”./node_modules/angular-chart/dist/index.js”></script>
+
 </head>
 <body>
     <header>
@@ -19,6 +21,25 @@
                 <li><a href="#Diagramm">Diagramm</a></li>
             </ul>
         </nav>
-    </header>    
+    </header>  
+    
+    <div id="waehrungInBtc">
+        <div id="euro">
+            <p id="waehrung">Euro</p>
+            <b><p id="preis">9.778,59 EUR</p></b>
+        </div>
+        <div id="usd">
+            <p id="waehrung">US Dollar</p>
+            <b><p id="preis">11.743,00 USD</p></b>
+        </div>
+        <div id="grb">
+            <p id="waehrung">Pfund Sterling</p>
+            <b><p id="preis">9.002,95 GBP</p></b>
+        </div>
+        <div id="asd">
+            <p id="waehrung">Australische Dollar</p>
+            <b><p id="preis">16.425,27 AUD</p></b>
+        </div>
+    </div>
 </body>
 </html>

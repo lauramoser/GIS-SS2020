@@ -1,6 +1,6 @@
 namespace Endabgabe {
 
-    //interface für die anzeige der Nachrichten
+    //interface für die Anzeige der Nachrichten
     interface Chat {        //Interface speichert meine values für den bestimmten key
     id: string;
     username: string;

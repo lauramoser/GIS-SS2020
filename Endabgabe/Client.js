@@ -22,7 +22,7 @@ var Endabgabe;
         //window.location.href = "https://lauramoser.github.io/GIS-SS2020/Endabgabe/Login.html";
     }
     //Variabel Deklaration um den Username zu verwenden
-    let vNameString;
+    let vNameString; //--> Variabel nur deklariert und gesagt, dass es ein String ist. 
     //Prüfen ob Daten beim Login in Datenbank enthalten sind
     async function handlePrüfen() {
         let formData = new FormData(document.forms[0]);
@@ -58,16 +58,18 @@ var Endabgabe;
             url = url + "/schicken" + "?" + "username=" + localStorage.getItem("vorname") + "&" + query.toString();
             let antwort = await fetch(url, { method: "get" });
             let antwort2 = await antwort.text();
-            nachricht = JSON.parse(antwort2);
+            nachricht = JSON.parse(antwort2); // --> Antwort in den Array gespeichert vom Interface gespeichert
+            // --> speichert mir die values für den entsprechenden key damit ich besser drauf zugreifen kann
             //console.log("nachricht: " + nachricht[0]);
             //alle Nachrichten generieren und in ein div umwandeln um es als p auszugeben
             for (let i = 0; i < nachricht.length; i++) {
-                let ausgabe = nachricht[i].username + ": " + nachricht[i].textnachricht;
-                let chatnach = document.createElement("div");
-                document.getElementById("nachrichtenID")?.appendChild(chatnach);
-                let text = document.createElement("p");
-                text.innerHTML = ausgabe;
-                chatnach.appendChild(text);
+                let ausgabe = nachricht[i].username + ": " + nachricht[i].textnachricht; //username und nachricht im Array 
+                let chatnach = document.createElement("div"); //ein div erstellt
+                document.getElementById("nachrichtenID")?.appendChild(chatnach); //div in das Ausgabenfeld gesetzt
+                //besser damit arbeiten zu können
+                let text = document.createElement("p"); //p erstellt
+                text.innerHTML = ausgabe; //aus der Augabe hab ich dann ein p (Text) draus gemacht
+                chatnach.appendChild(text); //dieser Text ist dann ein Kind vom div
             }
         }
         else {

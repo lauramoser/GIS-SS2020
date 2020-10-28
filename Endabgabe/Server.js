@@ -71,8 +71,8 @@ var Endabgabe;
                 let nachname = nachnameZsm[1];
                 let passwort = passwortZsm[1];
                 //alles speichern und in string umwandeln
-                let allesInDb = await daten.find().toArray();
-                let allesInDbString = JSON.stringify(allesInDb);
+                let allesInDb = await daten.find().toArray(); // alles aus der Datenbank ausgeben und in Array speichern
+                let allesInDbString = JSON.stringify(allesInDb); // in JSON umwandeln damit es vergleichen kann
                 //ist alles in der Datenbank enthalten? Kombi wird nicht abgefragt
                 if (allesInDbString.includes(vorname)) {
                     if (allesInDbString.includes(passwort)) {
@@ -97,7 +97,7 @@ var Endabgabe;
                 //Datenbankinhalt an Client schicken                
                 _response.write(JSON.stringify(array));
             }
-            //Verbesserun möglich mit chat raum in url speichern um hier eine if Abfrage zu machen
+            //Verbesserung möglich mit chat raum in url speichern um hier eine if Abfrage zu machen
             if (pathname == "/schicken2") {
                 chat2.insertOne(url.query);
                 let cursor = chat2.find();

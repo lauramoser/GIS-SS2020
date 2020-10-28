@@ -15,6 +15,7 @@ namespace Produkte {
     async function communicate(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch(_url);
         let antwort: string = await response.json();
+        console.log(antwort);
         weine = JSON.parse(JSON.stringify(antwort));
         produkteErstellen();
       }

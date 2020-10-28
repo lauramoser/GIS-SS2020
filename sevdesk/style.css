@@ -1,4 +1,6 @@
-
+body{
+    background-color: rgb(241, 238, 234);
+}
 
 nav{
     background-color: rgb(143, 24, 24);
@@ -45,3 +47,20 @@ a.active,a:hover{
     background-color: white;
     transition: .5s;
 }
+
+#euro, #grb, #asd, #usd {
+    background-color: white;
+    width: 40%;
+    margin: 20px 0 0 20px;
+   
+    
+}
+
+#waehrungInBtc {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 0 0 14%;
+   
+}
+
